@@ -1,0 +1,1 @@
+﻿export default function Page() { return ( <div className="max-w-7xl mx-auto px-4 py-16"> <h1 className="font-display text-4xl text-ink mb-4">Page: sign-up</h1> <p className="font-body text-muted text-base">This route is scaffolded and ready for the corresponding prompt build.</p> </div> ); }

@@ -6,7 +6,7 @@
  * TODO: Wire into build process (add to package.json scripts)
  */
 
-import { blogPosts } from '../src/lib/data/blogPosts';
+import { blogPosts } from '../lib/data/blogPosts';
 
 const BASE_URL = process.env.SITE_URL || 'https://mlbuilder.in';
 

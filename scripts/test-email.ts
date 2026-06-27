@@ -13,7 +13,7 @@
 // To run this script, uncomment the code below and install the dependencies.
 //
 // import { Resend } from 'resend';
-// import { getConfirmationEmailHtml } from '../src/emails/ConfirmationEmail';
+// import { getConfirmationEmailHtml } from '../emails/ConfirmationEmail';
 //
 // const resend = new Resend(process.env.RESEND_API_KEY);
 //

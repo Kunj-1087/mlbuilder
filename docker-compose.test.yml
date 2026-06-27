@@ -1,0 +1,19 @@
+services:
+  postgres-test:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: mlbuilder
+      POSTGRES_PASSWORD: mlbuilder_dev_password
+      POSTGRES_DB: mlbuilder_test
+    volumes:
+      - mlbuilder_postgres_test_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mlbuilder -d mlbuilder_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  mlbuilder_postgres_test_data:
