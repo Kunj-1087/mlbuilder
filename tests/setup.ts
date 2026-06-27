@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { setupServer } from "msw/node";
 import { handlers, clearMockedHistory } from "./mocks/handlers";
-import { vi } from "vitest";
+import { vi, beforeAll, afterEach, afterAll } from "vitest";
 
 // 1. Establish MSW mock server
 export const server = setupServer(...handlers);
