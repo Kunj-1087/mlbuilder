@@ -11,7 +11,7 @@ describe("lib/newsletter - Opt-In Flow & State Lifecycle", () => {
   it("should subscribe a new email in PENDING state", async () => {
     const result = await subscribeNewsletter("new@example.com", "homepage");
     expect(result.success).toBe(true);
-    expect(result.message).toContain("confirmation link just landed");
+    expect((result as any).message).toContain("confirmation link just landed");
 
     const status = getSubscriberStatus("new@example.com");
     expect(status).not.toBeNull();
@@ -23,7 +23,7 @@ describe("lib/newsletter - Opt-In Flow & State Lifecycle", () => {
   it("should reject invalid email formats", async () => {
     const result = await subscribeNewsletter("invalidemail", "homepage");
     expect(result.success).toBe(false);
-    expect(result.error).toContain("doesn't look right");
+    expect((result as any).error).toContain("doesn't look right");
   });
 
   it("should confirm a pending subscriber using verification token", async () => {
@@ -52,7 +52,7 @@ describe("lib/newsletter - Opt-In Flow & State Lifecycle", () => {
     // Resubscribe
     const resubResult = await subscribeNewsletter("resub@example.com", "homepage");
     expect(resubResult.success).toBe(true);
-    expect(resubResult.message).toContain("confirmation link just landed");
+    expect((resubResult as any).message).toContain("confirmation link just landed");
 
     const rePending = getSubscriberStatus("resub@example.com");
     expect(rePending?.status).toBe("PENDING");

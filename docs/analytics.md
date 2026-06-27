@@ -6,9 +6,8 @@
 
 Add to `.env.local`:
 
-```
-VITE_POSTHOG_KEY=phc_xxxxxxxxxxxxx
-VITE_POSTHOG_HOST=https://us.i.posthog.com
+NEXT_PUBLIC_POSTHOG_KEY=phc_xxxxxxxxxxxxx
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 ```
 
 Get from https://posthog.com/ → create project → Settings → API Keys.
