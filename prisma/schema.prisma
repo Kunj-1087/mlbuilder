@@ -1,0 +1,228 @@
+// Prisma Schema for MLBuilder
+// Connect to PostgreSQL via DATABASE_URL environment variable
+// Run: npx prisma db push (or npx prisma migrate dev)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+  posts    Post[]
+  votes    PlatformVote[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  excerpt   String?
+  content   String?
+  category  String
+  authorId  String
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+// ── Newsletter Subscriber ──
+// Separate from User — subscribers don't need accounts,
+// and signed-in users don't auto-subscribe.
+
+enum SubscriberStatus {
+  PENDING
+  CONFIRMED
+  UNSUBSCRIBED
+}
+
+model Subscriber {
+  id               String           @id @default(cuid())
+  email            String           @unique
+  status           SubscriberStatus @default(PENDING)
+  confirmationToken String?         @unique
+  source           String?          // "homepage", "blog-footer", "post-cta", "lead-magnet", etc.
+  createdAt        DateTime         @default(now())
+  confirmedAt      DateTime?
+}
+
+// ── Lead Magnet ──
+// Catalogue of downloadable resources visitors get in exchange for email.
+// Multiple magnets over time — each with its own slug, content, and stats.
+
+enum LeadMagnetStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model LeadMagnet {
+  id             String           @id @default(cuid())
+  slug           String           @unique
+  title          String
+  tagline        String
+  description    String
+  filePath       String           // path relative to /public, e.g. "/lead-magnets/n8n-workflows.pdf"
+  fileSizeKb     Int
+  pageCount      Int?
+  coverColor     String           // one of: navy, black, teal, beige, maroon, olive
+  coverEmoji     String?
+  whatYouLearn   String[]         // array of 3-5 bullet points
+  status         LeadMagnetStatus @default(DRAFT)
+  downloadCount  Int              @default(0)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  claims         LeadMagnetClaim[]
+}
+
+// ── Lead Magnet Claim ──
+// Tracks who claimed which magnet. NOT unique on (email, leadMagnetId)
+// — a user can re-claim if they lose the link.
+
+model LeadMagnetClaim {
+  id              String    @id @default(cuid())
+  email           String
+  leadMagnetId    String
+  source          String?   // utm-like tag, e.g. "instagram-bio", "blog-cta", "homepage"
+  downloadToken   String    @unique
+  tokenUsedAt     DateTime?
+  createdAt       DateTime  @default(now())
+
+  leadMagnet      LeadMagnet @relation(fields: [leadMagnetId], references: [id])
+
+  @@index([email, leadMagnetId])
+}
+
+// ── Search Log ──
+// Lightweight analytics for search queries — no PII beyond the query text.
+// Feeds future decisions about "what content people are looking for but not finding."
+// TODO: Build /admin/search-insights dashboard later to surface zero-result queries
+
+model SearchLog {
+  id            String   @id @default(cuid())
+  query         String   // lowercased, trimmed
+  resultsCount  Int
+  hadClick      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([query])
+}
+
+// ── Platform Vote ──
+// Tracks which platforms users want MLBuilder to prioritize next.
+// One vote per user per platform (composite unique).
+
+model PlatformVote {
+  id        String   @id @default(cuid())
+  platform  String
+  userId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([platform, userId])
+}
+
+// ── Password Reset Token ──
+// Time-limited tokens for password reset flow.
+// Expires after 1 hour, single-use.
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  usedAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+}
+
+// ── Email Change ──
+// Pending email change requests requiring verification.
+// Verification link sent to NEW email, expires after 24 hours.
+
+model EmailChange {
+  id                String    @id @default(cuid())
+  userId            String
+  newEmail          String
+  verificationToken String    @unique
+  expiresAt         DateTime
+  createdAt         DateTime  @default(now())
+  completedAt       DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([verificationToken])
+}
+
+// ── Account Deletion ──
+// Pending account deletion requests with 24-hour cooling-off window.
+// Confirmation link sent to user's email, expires after 24 hours.
+
+model AccountDeletion {
+  id               String    @id @default(cuid())
+  userId           String
+  confirmationToken String   @unique
+  expiresAt        DateTime
+  createdAt        DateTime  @default(now())
+  completedAt      DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([confirmationToken])
+}

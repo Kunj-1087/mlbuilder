@@ -1,0 +1,14 @@
+ICON-MASKABLE.PNG — Production Brief
+
+Source asset: /public/brand/logo-mark-orange.svg (the orange star logo mark)
+Target dimensions: 512x512 px
+Target format: PNG (Portable Network Graphics)
+Background: SOLID CREAM #F5F1E6 (filling the entire 512x512 area)
+Padding/Safe Area: VERY IMPORTANT: The visible logo mark must fit entirely within the central 40% of the canvas (the "safe zone") to avoid being clipped when operating systems crop it into circles or squircles. The orange star mark must be centered and sized so it stays within a 204px diameter safe circle in the center.
+
+Production instructions:
+1. Create a 512x512 px canvas in Figma. Set the background to `#F5F1E6`.
+2. Draw a temporary 204x204 px circle centered at (256, 256) to serve as your safe zone indicator.
+3. Import `/public/brand/logo-mark-orange.svg`. Center the orange star mark and scale it to fit completely within the 204x204 px circle.
+4. Delete the temporary circle, then export the canvas as a 512x512 px PNG.
+5. Replace this `.README.txt` paired placeholder with the actual file.

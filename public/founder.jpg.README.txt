@@ -1,0 +1,20 @@
+FOUNDER.JPG — Production Brief
+
+Used on: `/about` page founder profile, account settings avatar fallbacks, and future blog author headers.
+
+Target dimensions: 800x800 px minimum (square crop)
+Format: JPG (Joint Photographic Experts Group), compressed to ~80% quality
+File size target: Under 200KB after optimization
+
+Visual direction:
+- Real photo of Kunj Nakrani — authentic, friendly, and informal (not a generic corporate headshot, not AI-generated).
+- Setting: Natural environment (e.g., working at a desk, simple wall, outdoors with a soft background blur).
+- Lighting: Natural daylight preferred, soft shadows, avoid high-contrast flash.
+- Framing: Head-and-shoulders or chest-up crop, centered at eye level.
+- Wardrobe: Casual (simple t-shirt or shirt, reflecting a student builder vibe).
+- Color compatibility: Avoid highly saturated clashing colors that fight with the cream, orange, and ink-black brand theme.
+
+Production options:
+1. Capture using a modern mobile camera (iPhone/Pixel portrait mode) with neutral backgrounds.
+2. Self-timer or tripod capture.
+3. Replace this placeholder file with the cropped `founder.jpg` once captured.

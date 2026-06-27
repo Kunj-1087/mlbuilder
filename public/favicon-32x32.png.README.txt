@@ -1,0 +1,13 @@
+FAVICON-32X32.PNG — Production Brief
+
+Source asset: /public/brand/logo-mark.svg (the ink-black star logo mark)
+Target dimensions: 32x32 px
+Target format: PNG (Portable Network Graphics)
+Background: TRANSPARENT
+Padding: Minimal (~2px margin)
+
+Production instructions:
+1. Open `/public/brand/logo-mark.svg` in Figma, Illustrator, or Inkscape.
+2. Export as PNG at 32x32 px.
+3. Optimize using https://tinypng.com to compress the asset.
+4. Replace this `.README.txt` paired placeholder with the actual file.

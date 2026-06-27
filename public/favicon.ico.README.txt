@@ -1,0 +1,16 @@
+FAVICON.ICO — Production Brief
+
+Source asset: /public/brand/logo-mark.svg (the ink-black star logo mark)
+Target filename: favicon.ico
+Target format: Multi-resolution Microsoft Icon Format (.ico) containing:
+  - 16x16 px
+  - 32x32 px
+  - 48x48 px
+Background: TRANSPARENT (no cream background, as favicons render against dark/light browser chrome)
+Padding: Minimal (~2px margin) to maximize the star's visibility at small resolutions.
+
+Production instructions (choose one):
+1. RealFaviconGenerator: Go to https://realfavicongenerator.net, upload `/public/brand/logo-mark.svg`, configure the ICO generator options, and download the resulting `favicon.ico`.
+2. Figma + IcoConverter: Export `/public/brand/logo-mark.svg` as PNGs at 16x16, 32x32, and 48x48. Upload them to https://www.icoconverter.com to package them into a single `favicon.ico`.
+3. ImageMagick CLI: Run the following command in terminal:
+   convert -background transparent D:/Movies/mlbuilder/public/brand/logo-mark.svg -define icon:auto-resize=16,32,48 D:/Movies/mlbuilder/public/favicon.ico

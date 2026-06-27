@@ -1,0 +1,13 @@
+EMAIL-LOGO.PNG — Production Brief
+
+Source asset: /public/brand/email-logo.svg (the text-only wordmark)
+Target dimensions: 480x96 px (2x resolution of the 240x48 display size for Retina display crispness)
+Target format: PNG (Portable Network Graphics)
+Background: TRANSPARENT
+File size target: Under 20KB after optimization
+
+Production instructions:
+1. Open `/public/brand/email-logo.svg` in Figma, Illustrator, or Canva.
+2. Select the group and export as PNG at 2x resolution (480x96 px).
+3. Compress using https://tinypng.com to ensure file size remains under 20KB for fast email loading.
+4. Replace this `.README.txt` paired placeholder with the actual file.

@@ -1,0 +1,13 @@
+ICON-512.PNG — Production Brief
+
+Source asset: /public/brand/logo-stacked.svg or /public/brand/logo-mark.svg
+Target dimensions: 512x512 px
+Target format: PNG (Portable Network Graphics)
+Background: TRANSPARENT or CREAM #F5F1E6
+Padding: Leave ~60-70px safe margin on all sides.
+
+Production instructions:
+1. Open `/public/brand/logo-stacked.svg` (or the logo-mark) in your design tool.
+2. Scale canvas to 512x512 px.
+3. Export as PNG.
+4. Replace this `.README.txt` paired placeholder with the actual file.

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <!-- Centered sharp star mark in ink black -->
+  <path d="M 128 20 L 135 50 L 168 60 L 135 70 L 128 100 L 121 70 L 88 60 L 121 50 Z" fill="#111111" />
+  <!-- Stacked Wordmark -->
+  <text x="128" y="170" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="64" font-weight="900" fill="#FF6A1A" letter-spacing="-0.02em">ML</text>
+  <text x="134" y="215" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="28" font-weight="900" fill="#111111" letter-spacing="0.12em">BUILDER</text>
+</svg>

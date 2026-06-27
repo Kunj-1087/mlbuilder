@@ -1,0 +1,13 @@
+APPLE-TOUCH-ICON.PNG — Production Brief
+
+Source asset: /public/brand/logo-stacked.svg or /public/brand/logo-mark.svg
+Target dimensions: 180x180 px
+Target format: PNG (Portable Network Graphics)
+Background: SOLID CREAM #F5F1E6 (DO NOT USE TRANSPARENCY - iOS will render transparent icons against black backgrounds)
+Padding/Safe Area: Center the logo mark/star, leaving a safety margin of about 15-20% on all sides (~30-36px padding).
+
+Production instructions:
+1. Create a 180x180 px square canvas with background color `#F5F1E6` in Figma/Canva.
+2. Center the ink-black star logo mark (or stacked logo) inside. Size it to fit within a ~110px box.
+3. Export as a high-quality 24-bit PNG.
+4. Replace this `.README.txt` paired placeholder with the actual file.

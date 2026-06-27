@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1754" width="100%" height="100%">
+  <defs>
+    <!-- Faint grid pattern overlay -->
+    <pattern id="cover-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M 120 0 L 0 0 0 120" fill="none" stroke="#F5F1E6" stroke-width="1.5" opacity="0.04" />
+    </pattern>
+  </defs>
+
+  <!-- Deep Navy Background -->
+  <rect width="1240" height="1754" fill="#1B2A4E" />
+  <!-- Grid overlay -->
+  <rect width="1240" height="1754" fill="url(#cover-grid)" />
+
+  <!-- Massive Display Title (Editable placeholder) -->
+  <text x="100" y="380" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="96" font-weight="900" fill="#F5F1E6" letter-spacing="-0.02em">
+    <tspan x="100" dy="0">DRAFTING</tspan>
+    <tspan x="100" dy="110">THE SYSTEM</tspan>
+    <tspan x="100" dy="110">ARCHITECT</tspan>
+  </text>
+
+  <!-- Subtitle Tagline (Caveat script font) -->
+  <text x="100" y="740" font-family="'Caveat', cursive" font-size="52" font-weight="700" fill="#FF6A1A">A Step-by-Step AI Automation Blueprint</text>
+
+  <!-- Bottom Brand Mark -->
+  <g transform="translate(100, 1550)">
+    <!-- Star -->
+    <path d="M 24 2 L 27.75 17.75 L 43.5 24 L 27.75 30.25 L 24 46 L 20.25 30.25 L 4.5 24 L 20.25 17.75 Z" fill="#F5F1E6" />
+    <!-- Text -->
+    <text x="64" y="34" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="40" font-weight="900" letter-spacing="-0.02em">
+      <tspan fill="#FF6A1A">ML</tspan><tspan fill="#F5F1E6">BUILDER</tspan>
+    </text>
+  </g>
+
+  <!-- Bottom Right Free Tag -->
+  <g transform="translate(940, 1550)">
+    <rect width="200" height="54" rx="27" fill="#FF6A1A" stroke="#F5F1E6" stroke-width="2.5" />
+    <text x="100" y="34" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#111111">FREE PDF</text>
+  </g>
+</svg>

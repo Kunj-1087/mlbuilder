@@ -1,0 +1,23 @@
+OG-IMAGE.PNG — Production Brief
+
+Target dimensions: 1200x630 px (standard Open Graph format)
+Format: PNG (to maintain crisp text and sharp lines against flat background colors)
+File size target: Under 300KB after optimization
+
+Visual layout (corresponds to the dynamic design at `/opengraph-image` or `/src/pages/dev/EmailPreview` references):
+- Cream background (#F5F1E6) filling the entire 1200x630 canvas.
+- Faint graph-paper grid overlay (thin ink-black lines, 8% opacity, ~80px cell size).
+- Top-left (80px padding): MLBUILDER wordmark — "ML" in brand orange `#FF6A1A`, "BUILDER" in ink black `#111111`, Archivo Black ~36px, with small ★ icon (ink black, 32px) to the left.
+- Center-left content (vertically centered):
+  - Headline "AI BUILDS. RESEARCH. TOOLS." in Archivo Black, ~96px, ink black, 3 stacked lines, line-height 0.95.
+  - The word "AI" is wrapped in a solid orange `#FF6A1A` rectangular block with 16px padding and a slight -2° rotation.
+  - Below the headline: "Built solo. Shared openly." in Caveat italic ~32px, ink black.
+- Bottom-right (80px padding): "mlbuilder.in" in Inter ~24px, ink black.
+- Bottom-left: Thin ink-black horizontal accent bar (3px tall, 200px wide).
+
+Production options:
+1. Figma: Rebuild the design using the guidelines above, export at 2x, and resize/downsample.
+2. Screenshot/Dev Server: Visit the local dev server `/opengraph-image` route once the site's dynamic OG image generator is active, right-click, and "Save Image As".
+3. Canva: Recreate the composition using a custom 1200x630 px canvas.
+
+Replace this `.README.txt` paired placeholder with the actual file.
