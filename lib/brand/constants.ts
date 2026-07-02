@@ -1,9 +1,9 @@
 export const BRAND = {
   colors: {
-    cream: "#F5F1E6",
-    creamMuted: "#EFEAD8",
-    ink: "#111111",
-    orange: "#FF6A1A",
+    cream: "#0A0A0F",
+    creamMuted: "#0F1117",
+    ink: "#F8FAFC",
+    orange: "#4F7CFF",
   },
   fonts: {
     display: '"Archivo Black", "Arial Black", sans-serif',

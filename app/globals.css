@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #F5F1E6;
-  --color-ink: #111111;
-  --color-accent: #FF6A1A;
-  --color-surface: #FBF8F0;
-  --color-muted: #6B6B6B;
-  --color-cream-muted: #EFEAD8;
+  --color-cream: #0A0A0F;
+  --color-cream-muted: #0F1117;
+  --color-surface: #13151C;
+  --color-ink: #F8FAFC;
+  --color-accent: #4F7CFF;
+  --color-muted: #94A3B8;
 
   --color-cover-navy: #1B2A4E;
   --color-cover-black: #1A1A1A;
@@ -15,16 +15,85 @@
   --color-cover-maroon: #6B2D3A;
   --color-cover-olive: #3D4A2A;
 
-  --font-display: 'Archivo Black', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-script: 'Caveat', cursive;
+  --font-display: var(--font-display), 'Arial Black', 'Helvetica Neue', sans-serif;
+  --font-body: var(--font-body), 'Helvetica Neue', Arial, sans-serif;
+  --font-script: var(--font-script), 'Comic Sans MS', cursive;
+  --font-mono: var(--font-mono), Menlo, monospace;
+
+  --text-display-xl: clamp(60px, 8vw, 140px);
+  --text-display-xl--line-height: 0.95;
+  --text-display-xl--letter-spacing: -0.02em;
+
+  --text-display-lg: clamp(48px, 6vw, 96px);
+  --text-display-lg--line-height: 0.95;
+  --text-display-lg--letter-spacing: -0.02em;
+
+  --text-display-md: clamp(36px, 4.5vw, 64px);
+  --text-display-md--line-height: 1.0;
+  --text-display-md--letter-spacing: -0.015em;
+
+  --text-display-sm: clamp(28px, 3vw, 40px);
+  --text-display-sm--line-height: 1.05;
+  --text-display-sm--letter-spacing: -0.01em;
+
+  --text-heading-lg: clamp(24px, 2.5vw, 32px);
+  --text-heading-lg--line-height: 1.1;
+  --text-heading-lg--letter-spacing: -0.005em;
+
+  --text-heading-md: clamp(20px, 2vw, 24px);
+  --text-heading-md--line-height: 1.15;
+  --text-heading-md--letter-spacing: 0;
+
+  --text-heading-sm: 18px;
+  --text-heading-sm--line-height: 1.2;
+  --text-heading-sm--letter-spacing: 0;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--letter-spacing: 0;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--letter-spacing: 0;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.5;
+  --text-body-sm--letter-spacing: 0;
+
+  --text-body-xs: 13px;
+  --text-body-xs--line-height: 1.5;
+  --text-body-xs--letter-spacing: 0;
+
+  --text-script-lg: clamp(22px, 2.5vw, 28px);
+  --text-script-lg--line-height: 1.3;
+  --text-script-lg--letter-spacing: 0;
+
+  --text-script-md: clamp(18px, 2vw, 22px);
+  --text-script-md--line-height: 1.4;
+  --text-script-md--letter-spacing: 0;
+
+  --text-script-sm: 16px;
+  --text-script-sm--line-height: 1.4;
+  --text-script-sm--letter-spacing: 0;
+
+  --text-eyebrow: 13px;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.1em;
+
+  --text-label: 12px;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+
+  --text-fine: 11px;
+  --text-fine--line-height: 1.4;
+  --text-fine--letter-spacing: 0.04em;
 
   --radius-pill: 9999px;
   --radius-sharp: 4px;
 
-  --shadow-hard: 4px 4px 0 #111111;
-  --shadow-hard-sm: 2px 2px 0 #111111;
-  --shadow-hard-lg: 6px 6px 0 #111111;
+  --shadow-hard: 4px 4px 0 #1E2130;
+  --shadow-hard-sm: 2px 2px 0 #1E2130;
+  --shadow-hard-lg: 6px 6px 0 #1E2130;
 }
 
 * {
@@ -32,16 +101,16 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #F5F1E6;
-  color: #111111;
+  font-family: var(--font-body);
+  background-color: #0A0A0F;
+  color: #F8FAFC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #FF6A1A;
-  color: #F5F1E6;
+  background-color: #4F7CFF;
+  color: #FFFFFF;
 }
 
 /* Scrollbar styling */
@@ -49,10 +118,10 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F1E6;
+  background: #0A0A0F;
 }
 ::-webkit-scrollbar-thumb {
-  background: #111111;
+  background: #1E2130;
   border-radius: 4px;
 }
 
@@ -191,4 +260,230 @@ body {
 
 .skeleton-fade-in {
   animation: skeletonFadeIn 200ms ease-out;
+}
+
+/* ──────────────────────────────────────────────────────────
+   DARK CANVAS EXTENSION & COLOR REFITTING OVERRIDES
+   ────────────────────────────────────────────────────────── */
+
+/* Override neubrutalist ink-borders and text-ink color contexts */
+.border-ink,
+.border-b-2.border-ink,
+.border-t-2.border-ink,
+.border-y-2.border-ink,
+.border-2.border-ink,
+hr.border-t-2.border-ink {
+  border-color: #1E2130 !important;
+}
+
+.border-ink\/10,
+.border-b.border-ink\/10 {
+  border-color: #161824 !important;
+}
+
+.text-ink {
+  color: #F8FAFC !important;
+}
+
+.bg-ink {
+  background-color: #0F1117 !important;
+}
+
+.text-cream {
+  color: #F8FAFC !important;
+}
+
+.bg-cream {
+  background-color: #0A0A0F !important;
+}
+
+/* Secondary & muted typography mappings */
+.text-muted {
+  color: #94A3B8 !important;
+}
+
+.text-cream\/50,
+.text-cream\/60 {
+  color: #94A3B8 !important;
+}
+
+.text-cream\/30 {
+  color: #4A5568 !important;
+}
+
+/* Input Fields overrides (subscribe newsletter, etc.) */
+input[type="email"].bg-cream {
+  background-color: #13151C !important;
+  border-color: #1E2130 !important;
+  color: #F8FAFC !important;
+}
+input[type="email"].bg-cream::placeholder {
+  color: #4A5568 !important;
+}
+
+/* Desktop dropdown inactive/active triggers */
+nav .bg-surface.text-ink.border-ink {
+  border-color: #1E2130 !important;
+  background-color: #0F1117 !important;
+  color: #F8FAFC !important;
+  box-shadow: 2px 2px 0 #1E2130 !important;
+}
+nav .bg-surface.text-ink.border-ink:hover {
+  background-color: #1A1D27 !important;
+  color: #F8FAFC !important;
+}
+nav .bg-ink.text-cream.border-ink {
+  border-color: #1E2130 !important;
+  background-color: #1E2130 !important;
+  color: #F8FAFC !important;
+  box-shadow: 2px 2px 0 #1E2130 !important;
+}
+
+/* Search Trigger Button */
+nav button[aria-label="Open search"] {
+  background-color: #0F1117 !important;
+  border-color: #1E2130 !important;
+  color: #94A3B8 !important;
+  box-shadow: 2px 2px 0 #1E2130 !important;
+}
+nav button[aria-label="Open search"]:hover {
+  box-shadow: 4px 4px 0 #1E2130 !important;
+}
+nav button[aria-label="Open search"] .bg-cream {
+  background-color: #1A1D27 !important;
+  border-color: #1E2130 !important;
+  color: #4A5568 !important;
+}
+
+/* Mobile search trigger and menu toggles */
+nav button[aria-label="Toggle menu"] {
+  background-color: #0F1117 !important;
+  border-color: #1E2130 !important;
+  color: #F8FAFC !important;
+  box-shadow: 2px 2px 0 #1E2130 !important;
+}
+nav button[aria-label="Toggle menu"] svg path {
+  stroke: #F8FAFC !important;
+}
+
+/* Search modal close buttons & shortcut hint */
+.search-modal {
+  background-color: #0A0A0F !important;
+  border-color: #1E2130 !important;
+}
+.search-modal button[aria-label="Close search (Esc)"] {
+  border-color: #1E2130 !important;
+  color: #F8FAFC !important;
+}
+.search-modal button[aria-label="Close search (Esc)"]:hover {
+  background-color: #1E2130 !important;
+  color: #F8FAFC !important;
+}
+.search-modal input[type="text"] {
+  color: #F8FAFC !important;
+}
+.search-modal input[type="text"]::placeholder {
+  color: #4A5568 !important;
+}
+.search-modal .bg-cream {
+  background-color: #0A0A0F !important;
+}
+.search-modal .bg-cream-muted {
+  background-color: #0F1117 !important;
+}
+
+/* Nav Dropdowns dropdown content box */
+.bg-surface.border-2.border-ink.shadow-hard-lg {
+  background-color: #13151C !important;
+  border-color: #1E2130 !important;
+  box-shadow: 6px 6px 0 #1E2130 !important;
+}
+
+/* Inactive nav dropdown links */
+.bg-surface.border-2.border-ink.shadow-hard-lg a {
+  border-bottom-color: #1E2130 !important;
+  color: #F8FAFC !important;
+}
+.bg-surface.border-2.border-ink.shadow-hard-lg a:hover {
+  background-color: #4F7CFF !important;
+  color: #FFFFFF !important;
+}
+
+/* Specific nav item overrides */
+nav a[href="/free"].bg-surface {
+  border-color: #4F7CFF !important;
+  color: #4F7CFF !important;
+  background-color: transparent !important;
+  box-shadow: 2px 2px 0 #4F7CFF !important;
+}
+nav a[href="/free"].bg-surface:hover {
+  background-color: rgba(79, 124, 255, 0.12) !important;
+  color: #4F7CFF !important;
+}
+nav a[href="/sign-in"] {
+  background-color: #4F7CFF !important;
+  color: #FFFFFF !important;
+  border-color: #1E2130 !important;
+}
+nav a[href="/sign-in"]:hover {
+  background-color: #3D6AED !important;
+  color: #FFFFFF !important;
+}
+
+/* Inactive tags in page categories */
+.bg-cream-muted {
+  background-color: #0F1117 !important;
+}
+
+/* Active tags/pills */
+.bg-accent {
+  background-color: #4F7CFF !important;
+}
+.bg-accent:hover {
+  background-color: #3D6AED !important;
+}
+
+/* Hover Accent overrides */
+.hover\:text-accent:hover {
+  color: #3D6AED !important;
+}
+.hover\:bg-accent:hover {
+  background-color: #3D6AED !important;
+}
+
+/* Navigation overrides */
+nav.sticky.top-0 {
+  background-color: #0A0A0F !important;
+  border-bottom: 1px solid #1E2130 !important;
+}
+
+/* Footer Container overrides */
+footer.bg-ink {
+  background-color: #07070B !important;
+  border-top: 1px solid #1E2130 !important;
+}
+footer.bg-ink,
+footer.bg-ink a,
+footer.bg-ink span,
+footer.bg-ink p,
+footer.bg-ink div {
+  color: #94A3B8;
+}
+footer.bg-ink .text-accent {
+  color: #4F7CFF !important;
+}
+footer.bg-ink .text-cream {
+  color: #F8FAFC !important;
+}
+footer.bg-ink .text-cream\/60,
+footer.bg-ink .text-cream\/50 {
+  color: #94A3B8 !important;
+}
+footer.bg-ink .text-cream\/30 {
+  color: #4A5568 !important;
+}
+
+/* Skeleton loader backgrounds override */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #13151C 25%, #1A1D27 50%, #13151C 75%) !important;
 }

@@ -23,6 +23,7 @@ import { useSearchIndex } from '@/lib/search/useSearchIndex';
 import { useSearchAnalytics } from '@/lib/search/useSearchAnalytics';
 import { track, EVENTS } from '@/lib/analytics/track';
 import BookmarkButton from '@/components/bookmarks/BookmarkButton';
+import { SectionHeading, Body, ScriptText, Label } from '@/components/typography';
 import {
   fuseConfig,
   TYPE_LABELS,
@@ -146,14 +147,14 @@ function SearchResultRow({ item, isSelected, onHover, onSelect, refCallback }: S
       <ResultCover item={item} />
 
       <div className="flex-1 min-w-0">
-        <p className="font-display text-[16px] text-ink truncate">
+        <p className="font-display text-heading-sm text-ink truncate">
           <HighlightedText
             text={item.title}
             matches={item.matches}
             fieldKey="title"
           />
         </p>
-        <p className="font-body text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
+        <p className="font-body text-body-xs font-semibold uppercase tracking-[0.08em] text-muted">
           {TYPE_LABELS[item.type]} · {item.category}
         </p>
       </div>
@@ -365,7 +366,7 @@ export default function SearchModal() {
         className="
           relative z-10 w-full max-w-[720px] mx-4
           bg-cream border-2 border-ink rounded-sharp
-          shadow-[12px_12px_0_#111111]
+          shadow-[12px_12px_0_#1E2130]
           flex flex-col
           max-h-[80vh]
           search-modal
@@ -377,9 +378,7 @@ export default function SearchModal() {
         <div className="px-6 pt-5 pb-4 border-b-2 border-ink">
           {/* Top row */}
           <div className="flex items-center justify-between mb-3">
-            <p className="font-body text-[13px] font-semibold uppercase tracking-[0.1em] text-ink">
-              § SEARCH MLBUILDER
-            </p>
+            <Label className="tracking-[0.1em]">§ SEARCH MLBUILDER</Label>
             <button
               onClick={close}
               className="
@@ -402,21 +401,19 @@ export default function SearchModal() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search posts, tools, papers..."
-              className="
+              placeholder="Search posts, tools, papers..."                className="
                 flex-1 bg-transparent border-none outline-none
-                font-display text-[28px] text-ink
+                font-display text-heading-lg text-ink
                 placeholder:text-muted/50
                 min-w-0
               "
-              style={{ fontSize: '28px' }}
               aria-label="Search MLBuilder"
               aria-expanded={results.length > 0}
               aria-controls="search-results"
               role="combobox"
               aria-autocomplete="list"
             />
-            <span className="flex-shrink-0 px-2 py-0.5 rounded-pill border-2 border-ink/20 bg-surface font-mono text-[11px] text-muted">
+            <span className="flex-shrink-0 px-2 py-0.5 rounded-pill border-2 border-ink/20 bg-surface font-mono text-body-xs text-muted">
               {os === 'mac' ? '⌘K' : 'Ctrl K'}
             </span>
           </div>
@@ -434,7 +431,7 @@ export default function SearchModal() {
                 }}
                 className={`
                   px-3 py-1.5 rounded-pill border-2 border-ink
-                  font-body text-[12px] font-semibold
+                  font-body text-body-xs font-semibold
                   transition-all duration-100 cursor-pointer
                   whitespace-nowrap
                   ${activeFilter === filter.type
@@ -467,16 +464,14 @@ export default function SearchModal() {
 
           {isLoading ? (
             <div className="flex items-center justify-center py-12">
-              <p className="font-script text-muted text-lg">Loading search index…</p>
+              <ScriptText size="md" muted>Loading search index…</ScriptText>
             </div>
           ) : query.length === 0 ? (
             /* ── Empty state: suggestions ── */
             <div className="space-y-6 px-2 py-2">
               {/* Section A: Try searching for */}
               <div>
-                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.1em] text-muted mb-2">
-                  § TRY SEARCHING FOR
-                </p>
+                <Label className="text-muted mb-2 block">§ TRY SEARCHING FOR</Label>
                 <div className="flex flex-wrap gap-2">
                   {SUGGESTION_CHIPS.map((chip) => (
                     <button
@@ -484,7 +479,7 @@ export default function SearchModal() {
                       onClick={() => handleChipClick(chip)}
                       className="
                         px-3 py-1.5 rounded-pill border-2 border-ink
-                        bg-cream text-ink font-body text-[12px] font-medium
+                        bg-cream text-ink font-body text-body-xs font-medium
                         hover:bg-accent hover:text-ink
                         transition-colors cursor-pointer
                       "
@@ -497,9 +492,7 @@ export default function SearchModal() {
 
               {/* Section B: Quick links */}
               <div>
-                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.1em] text-muted mb-2">
-                  § QUICK LINKS
-                </p>
+                <Label className="text-muted mb-2 block">§ QUICK LINKS</Label>
                 <div className="space-y-1">
                   {QUICK_LINKS.map((item, i) => (
                     <button
@@ -517,8 +510,8 @@ export default function SearchModal() {
                     >
                       <ResultCover item={item} />
                       <div className="flex-1 min-w-0">
-                        <p className="font-display text-[16px] text-ink truncate">{item.title}</p>
-                        <p className="font-body text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
+                        <p className="font-display text-heading-sm text-ink truncate">{item.title}</p>
+                        <p className="font-body text-body-xs font-semibold uppercase tracking-[0.08em] text-muted">
                           {item.category}
                         </p>
                       </div>
@@ -533,13 +526,13 @@ export default function SearchModal() {
           ) : results.length === 0 ? (
             /* ── No results ── */
             <div className="flex flex-col items-center justify-center py-12">
-              <h3 className="font-display text-2xl text-ink mb-2">NOTHING MATCHED.</h3>
-              <p className="font-script text-muted text-lg mb-4">
+              <SectionHeading as="h3" size="lg" className="mb-2">NOTHING MATCHED.</SectionHeading>
+              <ScriptText size="md" muted className="mb-4">
                 Try a different word, or check the filter above.
-              </p>
+              </ScriptText>
               <button
                 onClick={() => { setQuery(''); setActiveFilter('all'); }}
-                className="font-body text-sm text-accent hover:text-ink transition-colors cursor-pointer"
+                className="font-body text-body-sm text-accent hover:text-ink transition-colors cursor-pointer"
               >
                 → Browse all content
               </button>
@@ -549,9 +542,9 @@ export default function SearchModal() {
             <div className="space-y-1">
               {Array.from(groupedResults.entries()).map(([typeLabel, items]) => (
                 <div key={typeLabel}>
-                  <p className="font-body text-[11px] font-semibold uppercase tracking-[0.1em] text-muted px-3 pt-4 pb-1">
+                  <Label className="text-muted px-3 pt-4 pb-1 block">
                     {typeLabel} ({items.length})
-                  </p>
+                  </Label>
                   {items.map((item) => {
                     const globalIdx = results.indexOf(item);
                     return (
@@ -587,14 +580,11 @@ export default function SearchModal() {
 
         {/* ── Footer ── */}
         <div className="px-5 py-3 border-t-2 border-ink/10 flex items-center justify-between">
-          <p className="font-body text-[12px] text-muted">
-            <kbd className="px-1 py-0.5 border border-ink/20 rounded text-[10px] font-mono">↑↓</kbd> navigate{' '}
-            <span className="mx-1 text-muted/40">·</span>{' '}
-            <kbd className="px-1 py-0.5 border border-ink/20 rounded text-[10px] font-mono">↵</kbd> open{' '}
-            <span className="mx-1 text-muted/40">·</span>{' '}
-            <kbd className="px-1 py-0.5 border border-ink/20 rounded text-[10px] font-mono">esc</kbd> close
+          <p className="font-body text-body-xs text-muted">             <kbd className="px-1 py-0.5 border border-ink/20 rounded text-body-xs font-mono">↑↓</kbd> navigate{' '}
+            <span className="mx-1 text-muted/40">·</span>{' '}             <kbd className="px-1 py-0.5 border border-ink/20 rounded text-body-xs font-mono">↵</kbd> open{' '}
+            <span className="mx-1 text-muted/40">·</span>{' '}             <kbd className="px-1 py-0.5 border border-ink/20 rounded text-body-xs font-mono">esc</kbd> close
           </p>
-          <p className="font-body text-[11px] text-muted/50">
+          <p className="font-body text-body-xs text-muted/50">
             Powered by Fuse.js
           </p>
         </div>

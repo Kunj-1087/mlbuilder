@@ -7,13 +7,14 @@ import TickerBar from "@/components/TickerBar";
 import NewsletterForm from "@/components/NewsletterForm";
 import FeaturedLeadMagnetStrip from "@/components/lead-magnet/FeaturedLeadMagnetStrip";
 import { WrenchIcon, FlaskIcon, StarIcon } from "@/components/icons/PillarIcons";
+import { DisplayHeading, SectionHeading, Body, ScriptText, Label } from "@/components/typography";
 
 /* ─── Play Button Icon (decorative) ─── */
 function PlayIcon() {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="opacity-[0.18]">
-      <circle cx="16" cy="16" r="14.5" stroke="#111111" strokeWidth="1.5" />
-      <path d="M13 10.5L22 16L13 21.5Z" fill="#111111" />
+      <circle cx="16" cy="16" r="14.5" stroke="#F8FAFC" strokeWidth="1.5" />
+      <path d="M13 10.5L22 16L13 21.5Z" fill="#F8FAFC" />
     </svg>
   );
 }
@@ -79,7 +80,7 @@ export default function Home() {
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(17,17,17,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,17,0.12) 1px, transparent 1px)",
+              "linear-gradient(#1A1D27 1px, transparent 1px), linear-gradient(90deg, #1A1D27 1px, transparent 1px)",
             backgroundSize: "120px 120px",
           }}
         />
@@ -102,26 +103,25 @@ export default function Home() {
           {/* Pill label */}
           <div className="inline-flex items-center gap-2 border-2 border-ink rounded-pill px-4 py-1.5 bg-cream mb-6 md:mb-8">
             <span className="text-accent text-xs">▶</span>
-            <span className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-ink">
+            <Label className="text-body-xs font-semibold tracking-[0.14em] text-ink">
               New drop every week
-            </span>
+            </Label>
           </div>
 
           {/* ── Headline: 3 lines, massive poster type ── */}
-          <h1 className="font-display text-[2.75rem] sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.88] tracking-tight mb-4 md:mb-6">
+          <DisplayHeading as="h1" size="xl" className="leading-[0.88] mb-4 md:mb-6">
             <span className="block text-ink">CUT THE NOISE</span>
             <span className="block text-ink">BUILD FOR REAL</span>
-            <span className="block">
+            <span className="block mt-2">
               <span className="inline-block bg-accent px-5 py-1 sm:px-7 sm:py-2 -rotate-2 text-ink">
                 AI THAT SHIPS
               </span>
             </span>
-          </h1>
+          </DisplayHeading>
 
-          {/* ── Script subheadline ── */}
-          <p className="font-script text-ink text-xl sm:text-2xl md:text-[28px] mb-8 md:mb-10">
+          {/* ── Script subheadline ── */}           <ScriptText size="lg" className="mb-8 md:mb-10">
             Automation, research, and tools — minus the fluff.
-          </p>
+          </ScriptText>
 
           {/* ── Stat boxes ── */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 md:mb-10">
@@ -130,8 +130,8 @@ export default function Home() {
                 key={s.label}
                 className="w-[140px] h-[90px] border-2 border-ink rounded-sharp bg-cream flex flex-col items-center justify-center"
               >
-                <span className="font-display text-2xl sm:text-3xl text-ink leading-none">{s.value}</span>
-                <span className="font-script text-muted text-sm mt-1">{s.label}</span>
+                <SectionHeading as="span" size="md" className="leading-none">{s.value}</SectionHeading>
+                <ScriptText size="sm" muted className="mt-1">{s.label}</ScriptText>
               </div>
             ))}
           </div>
@@ -148,7 +148,7 @@ export default function Home() {
                 href="/automation/workflows"
                 className="
                   inline-flex items-center justify-center
-                  font-body font-semibold text-base
+                  font-body font-semibold text-body-md
                   rounded-pill border-2 border-ink
                   bg-accent text-ink
                   shadow-hard
@@ -165,7 +165,7 @@ export default function Home() {
                   href="/sign-up"
                   className="
                     inline-flex items-center justify-center
-                    font-body font-semibold text-base
+                    font-body font-semibold text-body-md
                     rounded-pill border-2 border-ink
                     bg-accent text-ink
                     shadow-hard
@@ -180,7 +180,7 @@ export default function Home() {
                   href="/automation"
                   className="
                     inline-flex items-center justify-center
-                    font-body font-semibold text-base
+                    font-body font-semibold text-body-md
                     rounded-pill border-2 border-ink
                     bg-cream text-ink
                     shadow-hard
@@ -209,8 +209,8 @@ export default function Home() {
       ═══════════════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
         <div className="mb-10">
-          <h2 className="font-display text-3xl md:text-4xl text-ink mb-2">What's inside</h2>
-          <p className="font-body text-muted text-lg">Three pillars. Everything behind a free sign-in — no paywalls after that.</p>
+          <SectionHeading as="h2" size="lg" className="mb-2">What's inside</SectionHeading>
+          <Body size="lg" muted>Three pillars. Everything behind a free sign-in — no paywalls after that.</Body>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -228,16 +228,16 @@ export default function Home() {
               <div className="text-ink mb-4">{p.icon}</div>
 
               {/* Title */}
-              <h3 className="font-display text-[28px] text-ink mb-2">{p.title}</h3>
+              <DisplayHeading as="h3" size="sm" className="mb-2">{p.title}</DisplayHeading>
 
               {/* Description */}
-              <p className="font-body text-muted text-sm leading-relaxed mb-4">{p.description}</p>
+              <Body size="sm" muted className="leading-relaxed mb-4">{p.description}</Body>
 
               {/* Sign-in link */}
               {!user && (
                 <Link
                   href="/sign-in"
-                  className="font-body text-muted text-sm font-medium hover:text-accent transition-colors inline-flex items-center gap-1"
+                  className="font-body text-body-sm font-semibold text-muted hover:text-accent transition-colors inline-flex items-center gap-1"
                 >
                   Sign in to explore
                   <span className="text-accent">→</span>
@@ -268,17 +268,17 @@ export default function Home() {
       {!user && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24">
           <div className="bg-ink border-2 border-ink rounded-sharp shadow-hard-lg p-10 md:p-14 text-center">
-            <h2 className="font-display text-2xl md:text-4xl text-cream mb-3">
+            <SectionHeading as="h2" size="lg" className="text-cream mb-3">
               Make an account. It's free.
-            </h2>
-            <p className="font-body text-cream/60 text-base md:text-lg max-w-lg mx-auto mb-8 leading-relaxed">
+            </SectionHeading>
+            <Body size="md" className="text-cream/60 max-w-lg mx-auto mb-8 leading-relaxed">
               Everything's behind the sign-in, but it doesn't cost anything. Automation breakdowns, research digests, free tools — it's all there.
-            </p>
+            </Body>
             <Link
               href="/sign-up"
               className="
                 inline-flex items-center justify-center
-                font-body font-semibold text-lg
+                font-body font-semibold text-body-md
                 rounded-pill border-2 border-ink
                 bg-accent text-ink
                 shadow-hard

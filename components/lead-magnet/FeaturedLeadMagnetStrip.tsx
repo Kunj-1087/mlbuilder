@@ -28,17 +28,17 @@ export default function FeaturedLeadMagnetStrip() {
     >
       <div className="flex items-center gap-3">
         {/* Tag pill */}
-        <span className="flex-shrink-0 px-2.5 py-1 rounded-pill border-2 border-ink bg-surface font-body text-[11px] font-semibold text-ink tracking-wide">
+        <span className="flex-shrink-0 px-2.5 py-1 rounded-pill border-2 border-ink bg-surface font-body text-body-xs font-semibold text-ink tracking-wide">
           📥 FREE PDF
         </span>
 
         {/* Title */}
-        <span className="font-body text-[14px] font-medium text-ink truncate flex-1 min-w-0">
+        <span className="font-body text-body-sm font-medium text-ink truncate flex-1 min-w-0">
           {magnet.title}
         </span>
 
         {/* CTA */}
-        <span className="flex-shrink-0 font-body text-[14px] font-semibold text-accent">
+        <span className="flex-shrink-0 font-body text-body-sm font-semibold text-accent">
           Grab it →
         </span>
       </div>

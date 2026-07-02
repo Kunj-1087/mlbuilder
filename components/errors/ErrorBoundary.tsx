@@ -10,6 +10,7 @@ import { Component, type ReactNode } from 'react';
 import Link from 'next/link';
 import { logError } from '@/lib/errors/logError';
 import AlternatingTitle from '@/components/errors/AlternatingTitle';
+import { ScriptText, Body } from '@/components/typography';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -54,24 +55,24 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
               { text: 'HIT A', color: 'orange' },
               { text: 'BUG.', color: 'black' },
             ]}
-            className="font-display text-ink leading-[0.95] tracking-tight mb-3 text-[28px]"
+            className="font-display text-ink leading-[0.95] tracking-tight mb-3 text-display-sm"
             tag="h2"
           />
 
-          <p className="font-script text-ink text-[16px] mb-4">
+          <ScriptText size="sm" className="mb-4">
             Don't worry — the rest of the site still works.
-          </p>
+          </ScriptText>
 
-          <p className="font-body text-muted text-[14px] leading-relaxed mb-6">
+          <Body size="sm" muted className="leading-relaxed mb-6">
             Something failed loading this part of MLBuilder. Try again or jump back to your dashboard.
-          </p>
+          </Body>
 
           <div className="flex flex-wrap gap-3 mb-6">
             <button
               onClick={this.handleReset}
               className="
                 inline-flex items-center justify-center
-                font-body font-semibold text-[14px]
+                font-body font-semibold text-body-sm
                 rounded-pill border-2 border-ink
                 bg-accent text-ink px-6 py-2.5
                 shadow-hard-sm
@@ -85,7 +86,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
               href="/account"
               className="
                 inline-flex items-center justify-center
-                font-body font-semibold text-[14px]
+                font-body font-semibold text-body-sm
                 rounded-pill border-2 border-ink
                 bg-cream text-ink px-6 py-2.5
                 shadow-hard-sm
@@ -98,9 +99,9 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
           </div>
 
           {this.state.error?.message && (
-            <p className="font-body text-muted text-[11px]">
+            <Body size="xs" muted>
               Error: {this.state.error.message}
-            </p>
+            </Body>
           )}
         </div>
       );

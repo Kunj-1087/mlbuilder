@@ -2,22 +2,43 @@
  * Unified search index builder.
  *
  * Aggregates ALL content across MLBuilder into a single SearchableItem[]
- * array. This runs entirely CLIENT-SIDE — no server roundtrip needed.
- *
- * The result is cached in module-level state after first call so the
- * index is only built once per session.
+ * array. This runs server-side via the /api/search/index endpoint.
  */
 import { blogPosts } from '@/lib/data/blogPosts';
 import { getPublishedMagnets } from '@/lib/lead-magnet';
+import { getAllAutomations } from '@/lib/content/automation';
 import type { SearchableItem } from './fuseConfig';
 
-/** Map a coverColor string (e.g. "navy") to the Tailwind bg class */
-function colorToClass(color: string): string {
-  return `bg-cover-${color}`;
+const COVER_COLORS = ['navy', 'black', 'teal', 'beige', 'maroon', 'olive'];
+
+function getCoverColor(slug: string) {
+  let sum = 0;
+  for (let i = 0; i < slug.length; i++) {
+    sum += slug.charCodeAt(i);
+  }
+  return COVER_COLORS[sum % 6];
+}
+
+function getCoverEmoji(categorySlug: string): string {
+  switch (categorySlug) {
+    case 'web-scraping': return '🕸️';
+    case 'data-processing': return '📊';
+    case 'ai-workflows': return '⚙️';
+    case 'api-automations': return '🔧';
+    default: return '🐍';
+  }
+}
+
+function formatCategoryLabel(categorySlug: string): string {
+  if (categorySlug === 'web-scraping') return 'Web Scraping';
+  return categorySlug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 /** Build search index from all content sources */
-export function buildSearchIndex(): SearchableItem[] {
+export async function buildSearchIndex(): Promise<SearchableItem[]> {
   const items: SearchableItem[] = [];
 
   // ── Blog posts ──
@@ -32,117 +53,32 @@ export function buildSearchIndex(): SearchableItem[] {
       tags: [...post.categories, post.footerTag, post.filterCategory],
       category: post.filterCategory,
       publishedAt: null,
-      coverColor: colorToClass(post.coverColor),
+      coverColor: `bg-cover-${post.coverColor}`,
       coverEmoji: null,
     });
   }
 
-  // ── Automation placeholder entries ──
-  // These match the sub-pages users can navigate to
-  const automationItems: SearchableItem[] = [
-    {
-      id: 'auto-workflows',
-      type: 'automation',
-      title: 'Workflows',
-      description: 'Step-by-step AI automations — n8n, Python, and more.',
-      excerpt: 'n8n and Python automation breakdowns — first one in progress.',
-      url: '/automation/workflows',
-      tags: ['automation', 'workflows', 'n8n', 'python', 'pipelines'],
-      category: 'n8n Workflows',
-      publishedAt: null,
-      coverColor: 'bg-cover-navy',
-      coverEmoji: '⚙️',
-    },
-    {
-      id: 'auto-scripts',
-      type: 'automation',
-      title: 'Scripts',
-      description: 'Ready-to-run code snippets for common AI tasks.',
-      excerpt: 'Ready-to-run scripts for common AI tasks.',
-      url: '/automation/scripts',
-      tags: ['automation', 'scripts', 'code', 'snippets', 'python'],
-      category: 'Code Snippets',
-      publishedAt: null,
-      coverColor: 'bg-cover-teal',
-      coverEmoji: '🐍',
-    },
-    {
-      id: 'auto-casestudies',
-      type: 'automation',
-      title: 'Case Studies',
-      description: 'Real automation stories from people who shipped.',
-      excerpt: 'Real-world automation breakdowns from production.',
-      url: '/automation/case-studies',
-      tags: ['automation', 'case studies', 'real world', 'production'],
-      category: 'Case Studies',
-      publishedAt: null,
-      coverColor: 'bg-cover-maroon',
-      coverEmoji: '📊',
-    },
-  ];
-  items.push(...automationItems);
-
-  // ── Research placeholder entries ──
-  const researchItems: SearchableItem[] = [
-    {
-      id: 'research-papers',
-      type: 'research',
-      title: 'Research Papers',
-      description: 'Key AI papers broken down in plain English.',
-      excerpt: 'Key papers, explained plainly — first breakdowns in the works.',
-      url: '/research/papers',
-      tags: ['research', 'papers', 'AI', 'transformers', 'deep learning'],
-      category: 'LLM Papers',
-      publishedAt: null,
-      coverColor: 'bg-cover-beige',
-      coverEmoji: '📄',
-    },
-    {
-      id: 'research-library',
-      type: 'research',
-      title: 'Library',
-      description: 'Curated reading lists organized by topic.',
-      excerpt: 'Curated reading lists — being assembled now.',
-      url: '/research/library',
-      tags: ['research', 'library', 'reading lists', 'curated'],
-      category: 'Reading Lists',
-      publishedAt: null,
-      coverColor: 'bg-cover-olive',
-      coverEmoji: '📚',
-    },
-    {
-      id: 'research-insights',
-      type: 'research',
-      title: 'Insights',
-      description: 'Research takeaways that connect papers to things you can actually do.',
-      excerpt: 'What the research actually means — actionable insights.',
-      url: '/research/insights',
-      tags: ['research', 'insights', 'takeaways', 'practical'],
-      category: 'Research Insights',
-      publishedAt: null,
-      coverColor: 'bg-cover-black',
-      coverEmoji: '💡',
-    },
-  ];
-  items.push(...researchItems);
-
-  // ── Tools placeholder entries ──
-  const toolsItems: SearchableItem[] = [
-    {
-      id: 'tools-free',
-      type: 'tools',
-      title: 'Free Tools',
-      description: 'Free AI tools with no paywalls — the first one is almost ready.',
-      excerpt: 'No paywalls, no hidden upgrade screens, no catch.',
-      url: '/tools/free',
-      tags: ['tools', 'free', 'AI tools', 'no paywall'],
-      category: 'Free Tools',
-      publishedAt: null,
-      coverColor: 'bg-cover-accent',
-      coverEmoji: '🔧',
-    },
-  ];
-  items.push(...toolsItems);
+  // ── Dynamic Automations ──
+  try {
+    const automations = await getAllAutomations();
+    for (const auto of automations) {
+      items.push({
+        id: `auto-${auto.categorySlug}-${auto.slug}`,
+        type: 'automation',
+        title: auto.title,
+        description: auto.description,
+        excerpt: auto.excerpt,
+        url: `/automation/${auto.categorySlug}/${auto.slug}`,
+        tags: [...auto.tags, 'automation', auto.categorySlug, auto.difficulty],
+        category: formatCategoryLabel(auto.categorySlug),
+        publishedAt: auto.lastUpdated,
+        coverColor: `bg-cover-${getCoverColor(auto.slug)}`,
+        coverEmoji: getCoverEmoji(auto.categorySlug),
+      });
+    }
+  } catch (error) {
+    console.error('Error adding automations to search index:', error);
+  }
 
   // ── Published Lead Magnets ──
   const magnets = getPublishedMagnets();
@@ -157,7 +93,7 @@ export function buildSearchIndex(): SearchableItem[] {
       tags: [...magnet.whatYouLearn, 'free', 'pdf', 'download'],
       category: 'Free Downloads',
       publishedAt: null,
-      coverColor: colorToClass(magnet.coverColor),
+      coverColor: `bg-cover-${magnet.coverColor}`,
       coverEmoji: magnet.coverEmoji,
     });
   }

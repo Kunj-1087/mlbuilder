@@ -133,7 +133,7 @@ export default function BookmarkButton({
           inline-flex items-center gap-2
           px-3 py-2 rounded-pill
           border-2 border-ink
-          font-body text-[13px] font-semibold
+          font-body text-body-xs font-semibold
           shadow-hard-sm
           transition-all duration-150 cursor-pointer
           ${isSaved

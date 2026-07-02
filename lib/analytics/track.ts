@@ -133,3 +133,42 @@ export const EVENTS = {
   CONSENT_ACCEPTED: 'consent_accepted',
   CONSENT_REJECTED: 'consent_rejected',
 } as const;
+
+/**
+ * Server-side event tracking utility using PostHog HTTP Capture API.
+ */
+export async function trackServer(
+  eventName: string,
+  userId: string,
+  properties?: Record<string, unknown>
+): Promise<void> {
+  const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || '';
+  const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
+
+  if (!POSTHOG_KEY) return;
+
+  try {
+    const baseProperties = {
+      $lib: 'node',
+      distinct_id: userId,
+    };
+
+    await fetch(`${POSTHOG_HOST}/capture/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        api_key: POSTHOG_KEY,
+        event: eventName,
+        properties: {
+          ...baseProperties,
+          ...properties,
+        },
+      }),
+    });
+  } catch (error) {
+    console.error('Server-side PostHog tracking error:', error);
+  }
+}
+

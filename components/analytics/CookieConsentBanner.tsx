@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { initPostHog } from '@/lib/analytics/posthog';
 import { track, EVENTS } from '@/lib/analytics/track';
+import { SectionHeading, Body } from '@/components/typography';
 
 const CONSENT_KEY = 'mlbuilder_consent';
 
@@ -70,15 +71,15 @@ export default function CookieConsentBanner() {
                 <circle cx="10" cy="15" r="1" fill="#111111" />
                 <circle cx="16" cy="14" r="1" fill="#111111" />
               </svg>
-              <h3 className="font-display text-[16px] text-ink">BRIEF NOTE.</h3>
+              <span className="font-display text-body-sm text-ink uppercase">BRIEF NOTE.</span>
             </div>
-            <p className="font-body text-ink text-[13px] leading-[1.5] mb-1">
+            <Body size="xs" className="leading-[1.5] mb-1">
               I use PostHog to see what's working on MLBuilder — pages viewed, links clicked, that kind of thing.
               Nothing personal stored without you signing in.
-            </p>
+            </Body>
             <Link
               href="/privacy"
-              className="font-body text-muted text-[12px] hover:text-accent transition-colors"
+              className="text-muted text-body-xs hover:text-accent transition-colors"
             >
               Learn more →
             </Link>
@@ -90,7 +91,7 @@ export default function CookieConsentBanner() {
               onClick={handleAccept}
               className="
                 inline-flex items-center justify-center
-                font-body font-semibold text-[13px]
+                font-body font-semibold text-body-xs
                 rounded-pill border-2 border-ink
                 bg-accent text-ink
                 shadow-hard-sm
@@ -106,7 +107,7 @@ export default function CookieConsentBanner() {
               onClick={handleReject}
               className="
                 inline-flex items-center justify-center
-                font-body font-semibold text-[13px]
+                font-body font-semibold text-body-xs
                 rounded-pill border-2 border-ink
                 bg-cream text-ink
                 hover:bg-surface

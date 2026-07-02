@@ -59,7 +59,7 @@ export default function Toaster() {
             px-4 py-2.5 rounded-pill
             border-2 border-ink
             shadow-hard-sm
-            font-body text-[13px] font-semibold
+            font-body text-body-xs font-semibold
             ${typeStyles[t.type]}
             toast-enter
           `}

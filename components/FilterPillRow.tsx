@@ -17,7 +17,7 @@ export default function FilterPillRow({ filters, activeFilter, onFilterChange }:
               px-[18px] py-[10px]
               rounded-pill
               border-2 border-ink
-              font-body text-[14px] font-semibold
+              font-body text-body-sm font-semibold
               transition-all duration-150
               cursor-pointer select-none
               whitespace-nowrap

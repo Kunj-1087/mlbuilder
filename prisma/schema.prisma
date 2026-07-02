@@ -229,3 +229,15 @@ model AccountDeletion {
 
   @@index([confirmationToken])
 }
+
+model ContentDownloadCount {
+  id               String   @id @default(cuid())
+  contentType      String   // e.g., "AUTOMATION"
+  contentSlug      String
+  categorySlug     String
+  downloadCount    Int      @default(0)
+  lastDownloadedAt DateTime @default(now()) @updatedAt
+
+  @@unique([contentType, contentSlug, categorySlug])
+}
+

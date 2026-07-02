@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import NewsletterForm from './NewsletterForm';
 import { BRAND } from '@/lib/brand/constants';
+import { DisplayHeading, Body, Label, Fine } from '@/components/typography';
 
 export default function Footer() {
   return (
@@ -25,37 +26,37 @@ export default function Footer() {
                 <svg width="20" height="20" viewBox="0 0 22 22" fill="none" className="flex-shrink-0 group-hover:rotate-[20deg] transition-transform duration-300">
                   <path d="M11 0L13.1 8.9L22 11L13.1 13.1L11 22L8.9 13.1L0 11L8.9 8.9L11 0Z" fill={BRAND.colors.orange} />
                 </svg>
-                <span className="font-display text-lg tracking-tight select-none">
+                <DisplayHeading as="span" size="sm" className="tracking-tight select-none text-lg">
                   <span className="text-accent">ML</span><span className="text-cream">BUILDER</span>
-                </span>
+                </DisplayHeading>
               </Link>
-              <p className="font-body text-cream/50 text-sm mt-3 leading-relaxed max-w-[200px]">
+              <Body size="sm" className="text-cream/50 mt-3 leading-relaxed max-w-[200px]">
                 AI automation, research, and tools — built solo, shared openly.
-              </p>
+              </Body>
             </div>
 
             {/* ── Explore ── */}
             <div>
-              <h4 className="font-display text-xs text-accent tracking-[0.1em] mb-4">EXPLORE</h4>
+              <Label variant="default" className="text-accent text-body-xs block mb-4">EXPLORE</Label>
               <ul className="space-y-2.5">
                 <li>
-                  <Link href="/automation/workflows" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Automation
+                  <Link href="/automation/workflows" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Automation</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/research/papers" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Research
+                  <Link href="/research/papers" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Research</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/tools/free" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Tools
+                  <Link href="/tools/free" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Tools</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Blog
+                  <Link href="/blog" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Blog</Body>
                   </Link>
                 </li>
               </ul>
@@ -63,16 +64,16 @@ export default function Footer() {
 
             {/* ── Account ── */}
             <div>
-              <h4 className="font-display text-xs text-accent tracking-[0.1em] mb-4">ACCOUNT</h4>
+              <Label variant="default" className="text-accent text-body-xs block mb-4">ACCOUNT</Label>
               <ul className="space-y-2.5">
                 <li>
-                  <Link href="/sign-in" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Sign In
+                  <Link href="/sign-in" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Sign In</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sign-up" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Create Account
+                  <Link href="/sign-up" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Create Account</Body>
                   </Link>
                 </li>
               </ul>
@@ -80,16 +81,16 @@ export default function Footer() {
 
             {/* ── Resources ── */}
             <div>
-              <h4 className="font-display text-xs text-accent tracking-[0.1em] mb-4">RESOURCES</h4>
+              <Label variant="default" className="text-accent text-body-xs block mb-4">RESOURCES</Label>
               <ul className="space-y-2.5">
                 <li>
-                  <Link href="/free" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Free Downloads
+                  <Link href="/free" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Free Downloads</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/newsletter" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Newsletter
+                  <Link href="/newsletter" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Newsletter</Body>
                   </Link>
                 </li>
               </ul>
@@ -97,16 +98,16 @@ export default function Footer() {
 
             {/* ── Resources (cont.) ── */}
             <div>
-              <h4 className="font-display text-xs text-accent tracking-[0.1em] mb-4">LEGAL</h4>
+              <Label variant="default" className="text-accent text-body-xs block mb-4">LEGAL</Label>
               <ul className="space-y-2.5">
                 <li>
-                  <Link href="/privacy" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    Privacy Policy
+                  <Link href="/privacy" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Privacy Policy</Body>
                   </Link>
                 </li>
                 <li>
-                  <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="font-body text-sm text-cream/60 hover:text-accent transition-colors">
-                    RSS Feed ↗
+                  <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">RSS Feed ↗</Body>
                   </a>
                 </li>
               </ul>
@@ -114,24 +115,24 @@ export default function Footer() {
 
             {/* ── Connect ── */}
             <div>
-              <h4 className="font-display text-xs text-accent tracking-[0.1em] mb-4">CONNECT</h4>
+              <Label variant="default" className="text-accent text-body-xs block mb-4">CONNECT</Label>
               <ul className="space-y-2.5">
                 <li>
                   <a
                     href="https://instagram.com/mlbuilder.py"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-body text-sm text-cream/60 hover:text-accent transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
-                    Instagram ↗
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Instagram ↗</Body>
                   </a>
                 </li>
                 <li>
                   <a
                     href="mailto:hello@mlbuilder.com"
-                    className="font-body text-sm text-cream/60 hover:text-accent transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
-                    Email
+                    <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Email</Body>
                   </a>
                 </li>
               </ul>
@@ -140,12 +141,12 @@ export default function Footer() {
 
           {/* ── Bottom bar ── */}
           <div className="mt-12 pt-6 border-t-2 border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="font-body text-cream/30 text-xs">
+            <Fine muted className="text-cream/30">
               © 2026 MLBuilder. All rights reserved.
-            </p>
-            <p className="font-body text-cream/30 text-xs italic">
+            </Fine>
+            <Fine muted className="text-cream/30 italic">
               built solo, shared openly
-            </p>
+            </Fine>
           </div>
         </div>
       </footer>

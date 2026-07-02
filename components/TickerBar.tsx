@@ -13,7 +13,7 @@ export default function TickerBar() {
 
   const content = items.map((item, i) => (
     <span key={i} className="flex items-center whitespace-nowrap">
-      <span className="font-body text-[13px] font-semibold tracking-[0.18em] text-ink">{item}</span>
+      <span className="font-body text-body-xs font-semibold tracking-[0.18em] text-ink">{item}</span>
       {bullet}
     </span>
   ));

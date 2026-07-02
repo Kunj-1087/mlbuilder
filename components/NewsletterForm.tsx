@@ -4,6 +4,7 @@ import { useState, type FormEvent, useEffect, useRef } from 'react';
 import { subscribeNewsletter } from '@/lib/newsletter';
 import { track, EVENTS } from '@/lib/analytics/track';
 import InlineSpinner from '@/components/ui/loading/InlineSpinner';
+import { SectionHeading, ScriptText, Body } from '@/components/typography';
 
 interface NewsletterFormProps {
   variant: 'inline' | 'card' | 'footer-strip';
@@ -73,8 +74,8 @@ export default function NewsletterForm({
   if (success) {
     return (
       <div className="border-2 border-ink rounded-sharp bg-cream p-6 text-center max-w-md">
-        <div className="font-display text-xl text-ink mb-2">CHECK YOUR INBOX.</div>
-        <p className="font-script text-muted text-lg">{successMsg}</p>
+        <SectionHeading as="div" size="md" className="mb-2">CHECK YOUR INBOX.</SectionHeading>
+        <ScriptText size="lg" muted>{successMsg}</ScriptText>
       </div>
     );
   }
@@ -102,7 +103,7 @@ export default function NewsletterForm({
         className="
           flex-shrink-0
           inline-flex items-center justify-center
-          font-body font-semibold text-base
+          font-body font-semibold text-body-md
           rounded-pill border-2 border-ink
           bg-accent text-ink
           shadow-hard
@@ -119,7 +120,7 @@ export default function NewsletterForm({
   );
 
   const errorEl = error && (
-    <p className="font-body text-accent text-sm font-medium mt-2">{error}</p>
+    <Body size="sm" className="text-accent font-medium mt-2">{error}</Body>
   );
 
   /* â”€â”€ Variant: inline â”€â”€ */
@@ -136,8 +137,8 @@ export default function NewsletterForm({
   if (variant === 'card') {
     return (
       <div ref={formRef} className="border-2 border-ink rounded-sharp bg-surface shadow-hard p-8 md:p-10 max-w-lg text-center">
-        {heading && <h3 className="font-display text-2xl md:text-3xl text-ink mb-2">{heading}</h3>}
-        {subheading && <p className="font-script text-muted text-lg mb-6">{subheading}</p>}
+        {heading && <SectionHeading as="h3" size="lg" className="mb-2">{heading}</SectionHeading>}
+        {subheading && <ScriptText size="lg" muted className="mb-6">{subheading}</ScriptText>}
         {form}
         {errorEl}
       </div>
@@ -151,8 +152,8 @@ export default function NewsletterForm({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="flex-shrink-0">
-              {heading && <h3 className="font-display text-xl md:text-2xl text-ink">{heading}</h3>}
-              {subheading && <p className="font-script text-muted text-base">{subheading}</p>}
+              {heading && <SectionHeading as="h3" size="md" className="md:text-heading-lg">{heading}</SectionHeading>}
+              {subheading && <ScriptText size="sm" muted>{subheading}</ScriptText>}
             </div>
             <div className="flex-1 w-full">
               {form}

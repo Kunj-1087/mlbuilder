@@ -1,0 +1,43 @@
+---
+title: "Scraping LinkedIn Jobs with Python"
+description: "Automated LinkedIn job scraper that pulls listings matching your criteria, exports to CSV. Built with Selenium + BeautifulSoup."
+excerpt: "A complete Python automation that monitors LinkedIn for new job postings matching your search criteria, scrapes the details, and exports everything to a clean CSV file."
+tags: ["python", "selenium", "beautifulsoup", "linkedin", "jobs", "csv"]
+difficulty: "intermediate"
+estimatedTime: "20 min setup"
+publishedAt: "2026-01-15"
+updatedAt: "2026-01-15"
+coverImage: ""
+status: "published"
+---
+
+## What this automation does
+
+This script automates the tedious process of browsing, filtering, and collecting job listings from LinkedIn. Instead of manually clicking through hundreds of postings, this bot runs headlessly using Selenium, grabs job titles, companies, locations, and descriptions, and exports them directly into a CSV sheet.
+
+It handles:
+- Bypassing the initial LinkedIn sign-in prompt for public listings.
+- Scrolling down to trigger dynamic loading of listing cards.
+- Parsing details dynamically with BeautifulSoup.
+
+## How to set it up
+
+1. Clone or download this project folder.
+2. Install Python 3.8+ if not already installed.
+3. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the main script to start scraping:
+   ```bash
+   python main.py
+   ```
+
+## The code
+
+Here is the entrypoint file `main.py` which runs the scraper.
+
+```python
+# main.py
+print("Job scraper placeholder script running...")
+```

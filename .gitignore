@@ -22,3 +22,8 @@ Thumbs.db
 
 # Backup folders
 /legacy-vite-backup/
+
+# IDE Memory & Test Artifacts
+/project-brain/
+/playwright-report/
+/test-results/

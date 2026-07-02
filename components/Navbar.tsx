@@ -8,6 +8,7 @@ import { useSearch } from '@/lib/search/SearchContext';
 import DropdownMenu from './DropdownMenu';
 import PillButton from './PillButton';
 import { BRAND } from '@/lib/brand/constants';
+import { DisplayHeading, Body, Label } from '@/components/typography';
 
 const navItems = [
   {
@@ -76,8 +77,7 @@ function SearchTrigger() {
         hidden md:inline-flex items-center gap-2
         px-3 py-1.5 rounded-pill
         border-2 border-ink
-        bg-surface text-muted
-        font-body text-[13px]
+        bg-surface
         shadow-hard-sm
         hover:shadow-[6px_6px_0_#111111] hover:-translate-y-[1px]
         transition-all duration-150 cursor-pointer
@@ -85,9 +85,9 @@ function SearchTrigger() {
       "
       aria-label="Open search"
     >
-      <SearchIcon />
-      <span className="flex-1 text-left">Search...</span>
-      <span className="px-1.5 py-0.5 rounded border border-ink/20 bg-cream font-mono text-[10px] text-muted">
+      <span className="text-muted"><SearchIcon /></span>
+      <Body size="xs" muted className="flex-1 text-left select-none">Search...</Body>
+      <span className="px-1.5 py-0.5 rounded border border-ink/20 bg-cream font-mono text-body-xs text-muted">
         {os === 'mac' ? '⌘K' : 'Ctrl K'}
       </span>
     </button>
@@ -135,9 +135,9 @@ export default function Navbar() {
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" className="flex-shrink-0 group-hover:rotate-[20deg] transition-transform duration-300">
               <path d="M11 0L13.1 8.9L22 11L13.1 13.1L11 22L8.9 13.1L0 11L8.9 8.9L11 0Z" fill={BRAND.colors.orange} />
             </svg>
-            <span className="font-display text-lg md:text-xl tracking-tight select-none">
+            <DisplayHeading as="span" size="sm" className="tracking-tight select-none text-lg md:text-xl inline-flex items-center">
               <span className="text-accent">ML</span><span className="text-ink">BUILDER</span>
-            </span>
+            </DisplayHeading>
           </Link>
 
           {/* ── Center Nav (Desktop) ── */}
@@ -154,15 +154,14 @@ export default function Navbar() {
                         px-3.5 py-1.5
                         rounded-pill
                         border-2 border-ink
-                        font-body font-semibold text-sm
-                        transition-all duration-150 cursor-pointer
+                        transition-all duration-150 cursor-pointer select-none
                         ${active
-                          ? 'bg-ink text-cream shadow-hard-sm'
+                          ? 'bg-ink text-cream shadow-hard-sm font-semibold'
                           : 'bg-surface text-ink hover:bg-ink hover:text-cream shadow-hard-sm hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]'
                         }
                       `}
                     >
-                      {nav.label}
+                      <Label className="text-body-sm font-bold text-current cursor-pointer">{nav.label}</Label>
                       <ChevronIcon />
                     </span>
                   }
@@ -187,29 +186,28 @@ export default function Navbar() {
                     rounded-pill
                     border-2 border-ink
                     bg-surface text-ink
-                    font-body text-[12px] font-semibold
                     shadow-hard-sm
                     hover:bg-ink hover:text-cream
                     hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]
                     transition-all duration-150
                   "
                 >
-                  📥 Free PDF
+                  <Label className="text-body-xs font-bold text-current cursor-pointer">📥 Free PDF</Label>
                 </Link>
                 <Link
                   href="/account"
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-pill border-2 border-ink bg-surface hover:bg-ink hover:text-cream transition-colors text-sm font-semibold font-body shadow-hard-sm hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-pill border-2 border-ink bg-surface hover:bg-ink hover:text-cream transition-colors shadow-hard-sm hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]"
                 >
                   <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-cream text-xs font-bold border border-ink">
                     {user.name.charAt(0).toUpperCase()}
                   </div>
-                  {user.name}
+                  <Label className="text-body-sm font-bold text-current cursor-pointer">{user.name}</Label>
                 </Link>
                 <button
                   onClick={signOut}
-                  className="text-ink hover:text-accent text-sm font-semibold font-body transition-colors"
+                  className="hover:text-accent transition-colors cursor-pointer"
                 >
-                  Sign Out
+                  <Label className="text-body-sm font-bold text-ink cursor-pointer hover:text-accent transition-colors">Sign Out</Label>
                 </button>
               </div>
             ) : (
@@ -222,14 +220,13 @@ export default function Navbar() {
                     rounded-pill
                     border-2 border-ink
                     bg-surface text-ink
-                    font-body text-[12px] font-semibold
                     shadow-hard-sm
                     hover:bg-ink hover:text-cream
                     hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]
                     transition-all duration-150
                   "
                 >
-                  📥 Free PDF
+                  <Label className="text-body-xs font-bold text-current cursor-pointer">📥 Free PDF</Label>
                 </Link>
                 <PillButton to="/sign-in" variant="secondary" size="sm">
                   Sign In
@@ -269,9 +266,9 @@ export default function Navbar() {
               <div key={nav.label}>
                 <button
                   onClick={() => setMobileExpanded(mobileExpanded === nav.label ? null : nav.label)}
-                  className="w-full flex items-center justify-between px-3 py-2.5 font-display text-base text-ink"
+                  className="w-full flex items-center justify-between px-3 py-2.5 text-ink cursor-pointer"
                 >
-                  {nav.label}
+                  <DisplayHeading as="span" size="sm" className="text-base font-bold text-current">{nav.label}</DisplayHeading>
                   <svg
                     width="10" height="6" viewBox="0 0 10 6" fill="none"
                     className={`transition-transform duration-150 ${mobileExpanded === nav.label ? 'rotate-180' : ''}`}
@@ -286,9 +283,9 @@ export default function Navbar() {
                         key={item.to}
                         href={item.to}
                         onClick={() => setMobileOpen(false)}
-                        className="block pl-6 pr-3 py-2 text-sm font-body font-medium text-muted hover:text-ink hover:bg-cream transition-colors"
+                        className="block pl-6 pr-3 py-2 hover:bg-cream transition-colors"
                       >
-                        {item.label}
+                        <Body size="sm" muted className="font-semibold text-current">{item.label}</Body>
                       </Link>
                     ))}
                   </div>
@@ -299,17 +296,17 @@ export default function Navbar() {
             <Link
               href="/about"
               onClick={() => setMobileOpen(false)}
-              className="block px-3 py-2 font-display text-base text-ink"
+              className="block px-3 py-2 text-ink"
             >
-              About
+              <DisplayHeading as="span" size="sm" className="text-base font-bold text-current">About</DisplayHeading>
             </Link>
 
             <Link
               href="/free"
               onClick={() => setMobileOpen(false)}
-              className="block px-3 py-2 font-display text-base text-ink"
+              className="block px-3 py-2 text-ink"
             >
-              📥 Free PDF
+              <DisplayHeading as="span" size="sm" className="text-base font-bold text-current">📥 Free PDF</DisplayHeading>
             </Link>
 
             <div className="pt-3 border-t-2 border-ink/10 space-y-2">
@@ -318,18 +315,18 @@ export default function Navbar() {
                   <Link
                     href="/account"
                     onClick={() => setMobileOpen(false)}
-                    className="block px-3 py-2 text-sm font-semibold font-body text-ink"
+                    className="block px-3 py-2"
                   >
-                    Account ({user.name})
+                    <Label className="text-body-sm font-bold text-ink">Account ({user.name})</Label>
                   </Link>
                   <button
                     onClick={() => {
                       signOut();
                       setMobileOpen(false);
                     }}
-                    className="block w-full text-left px-3 py-2 text-sm font-semibold font-body text-accent"
+                    className="block w-full text-left px-3 py-2 cursor-pointer"
                   >
-                    Sign Out
+                    <Label className="text-body-sm font-bold text-accent cursor-pointer">Sign Out</Label>
                   </button>
                 </>
               ) : (

@@ -81,7 +81,7 @@ export async function seedTestDb() {
 }
 
 // Allow running this script directly
-if (require.main === module || (process.argv && process.argv[1] && process.argv[1].includes("seed.ts"))) {
+if (typeof require !== 'undefined' && require.main === module || (process.argv && process.argv[1] && process.argv[1].includes("seed.ts"))) {
   seedTestDb()
     .catch((err) => {
       console.error("❌ Seeding failed:", err);

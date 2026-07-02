@@ -35,7 +35,7 @@ export default function DropdownMenu({ trigger, items }: DropdownMenuProps) {
               className="
                 block px-5 py-3
                 border-b border-ink/10 last:border-0
-                font-body text-ink text-sm font-medium
+                font-body text-body-sm text-ink font-medium
                 hover:bg-accent hover:text-cream
                 transition-colors duration-100
               "

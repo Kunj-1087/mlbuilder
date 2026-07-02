@@ -9,6 +9,7 @@ import SearchShortcutHandler from "@/components/search/SearchShortcutHandler";
 import Toaster from "@/components/ui/Toaster";
 import CookieConsentBanner from "@/components/analytics/CookieConsentBanner";
 import { Suspense } from "react";
+import { archivoBlack, inter, caveat, geistMono } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${archivoBlack.variable} ${inter.variable} ${caveat.variable} ${geistMono.variable}`}>
+      <body className="antialiased font-body">
         <Providers>
           <div className="min-h-screen flex flex-col bg-cream">
             <OrganizationSchema />
