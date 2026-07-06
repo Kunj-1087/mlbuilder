@@ -152,7 +152,7 @@ export default function CategoryListingClient({
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-                    <DisplayHeading as="h3" size="sm" className="mb-3 break-words max-w-full px-2 text-current">
+                    <DisplayHeading as="h2" size="sm" className="mb-3 break-words max-w-full px-2 text-current">
                       {auto.title}
                     </DisplayHeading>
                     <Label className="text-body-xs opacity-75 tracking-wider text-current">
@@ -173,7 +173,7 @@ export default function CategoryListingClient({
                   {auto.tags.slice(0, 3).join(' • ')}
                 </Label>
 
-                <DisplayHeading as="h4" size="sm" className="text-lg leading-tight mb-2 line-clamp-2">
+                <DisplayHeading as="h2" size="sm" className="text-lg leading-tight mb-2 line-clamp-2">
                   {auto.title}
                 </DisplayHeading>
 

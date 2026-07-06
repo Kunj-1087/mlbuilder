@@ -15,6 +15,7 @@ import { mdxComponents, AutomationProvider } from '@/lib/content/mdx-components'
 import TableOfContentsClient from './TableOfContentsClient';
 import CodeFilesViewerClient from './CodeFilesViewerClient';
 import { DisplayHeading, SectionHeading, Body, ScriptText, Label, Eyebrow } from '@/components/typography';
+import { BlogPostingSchema } from '@/components/seo/JsonLd';
 
 interface PageProps {
   params: Promise<{
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${automation.title} — MLBuilder`,
     description: truncatedDesc,
     alternates: {
-      canonical: `/automation/${category}/${slug}`,
+      canonical: `https://mlbuilder.in/automation/${category}/${slug}`,
     },
     openGraph: {
       title: automation.title,
@@ -88,6 +89,11 @@ export async function generateMetadata({ params }: PageProps) {
       modifiedTime: automation.frontmatter.updatedAt || automation.frontmatter.publishedAt,
       authors: ['Kunj'],
       tags: automation.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: automation.title,
+      description: truncatedDesc,
     }
   };
 }
@@ -219,6 +225,14 @@ export default async function AutomationDetailPage({ params }: PageProps) {
 
   return (
     <AutomationProvider value={{ zipUrl: automation.zipUrl, title: automation.title, category: categorySlug, slug: slug }}>
+      <BlogPostingSchema
+        title={automation.title}
+        description={automation.description}
+        slug={`${categorySlug}/${slug}`}
+        publishedAt={automation.frontmatter.publishedAt}
+        updatedAt={automation.frontmatter.updatedAt}
+        tags={automation.tags}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
@@ -400,9 +414,9 @@ export default async function AutomationDetailPage({ params }: PageProps) {
         {/* Related Automations Section */}
         {relatedList.length > 0 && (
           <div className="mt-20">
-            <Label className="text-muted mb-4 select-none block">
+            <SectionHeading as="h2" size="sm" className="text-body-xs font-bold text-muted mb-4 select-none block tracking-widest">
               § MORE {categorySlug.replace('-', ' ').toUpperCase()}
-            </Label>
+            </SectionHeading>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedList.map(auto => {
@@ -430,7 +444,7 @@ export default async function AutomationDetailPage({ params }: PageProps) {
                     <div className={`bg-cover-${coverColor} ${coverColor === 'beige' ? 'text-ink' : 'text-cream'} relative h-[200px] flex-shrink-0`}>
                       <BookmarkButton item={coverItem} variant="card-corner" />
                       <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-                        <SectionHeading as="h4" size="sm" className="leading-tight mb-2 uppercase break-words max-w-full px-2">
+                        <SectionHeading as="h3" size="sm" className="leading-tight mb-2 uppercase break-words max-w-full px-2">
                           {auto.title}
                         </SectionHeading>
                         <Body size="xs" className="opacity-75 tracking-wider uppercase">
@@ -440,7 +454,7 @@ export default async function AutomationDetailPage({ params }: PageProps) {
                     </div>
                     
                     <div className="p-6 flex flex-col flex-1 bg-cream border-t border-ink/10">
-                      <SectionHeading as="h5" size="sm" className="leading-tight mb-2 line-clamp-2 uppercase">
+                      <SectionHeading as="h3" size="sm" className="leading-tight mb-2 line-clamp-2 uppercase">
                         {auto.title}
                       </SectionHeading>
                       <ScriptText size="sm" muted className="leading-snug line-clamp-3 mb-4 flex-1">

@@ -172,3 +172,36 @@ export function DigitalDocumentSchema({
     />
   );
 }
+
+/** SoftwareApplication schema for tools index or detail pages */
+export function SoftwareApplicationSchema({
+  name,
+  description,
+  applicationCategory,
+  operatingSystem = 'All',
+  offersPrice = '0',
+}: {
+  name: string;
+  description: string;
+  applicationCategory: string;
+  operatingSystem?: string;
+  offersPrice?: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name,
+        description,
+        applicationCategory,
+        operatingSystem,
+        offers: {
+          '@type': 'Offer',
+          price: offersPrice,
+          priceCurrency: 'USD',
+        },
+      }}
+    />
+  );
+}

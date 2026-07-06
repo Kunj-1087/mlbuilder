@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { getCategory } from '@/lib/content/automation';
 import { DisplayHeading, SectionHeading, Body, ScriptText, Label, Eyebrow } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'AI & Web Automations — Ready-to-Run Code',
+  description: 'Browse production-grade scraping scripts, API workflows, and data pipelines. Ready-to-run automation code designed for developers.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/automation',
+  },
+};
 
 export default async function AutomationPillarPage() {
   const webScraping = await getCategory('web-scraping');
@@ -83,7 +92,7 @@ export default async function AutomationPillarPage() {
               >
                 {/* Cover area */}
                 <div className={`${cat.coverColor} p-8 h-[160px] flex flex-col justify-center border-b-2 border-ink`}>
-                  <DisplayHeading as="h3" size="sm" className="mb-2 text-current">{cat.title}</DisplayHeading>
+                  <DisplayHeading as="h2" size="sm" className="mb-2 text-current">{cat.title}</DisplayHeading>
                   <ScriptText size="md" className="opacity-90 leading-tight text-current">{cat.tagline}</ScriptText>
                 </div>
                 {/* Content area */}
@@ -113,7 +122,7 @@ export default async function AutomationPillarPage() {
               >
                 {/* Cover area */}
                 <div className="bg-[#EFEAD8] text-muted p-8 h-[160px] flex flex-col justify-center border-b-2 border-ink/20 relative">
-                  <DisplayHeading as="h3" size="sm" className="mb-2 text-muted/80">{cat.title}</DisplayHeading>
+                  <DisplayHeading as="h2" size="sm" className="mb-2 text-muted/80">{cat.title}</DisplayHeading>
                   <ScriptText size="md" className="opacity-75 leading-tight text-muted">{cat.tagline}</ScriptText>
                   <Label className="absolute top-4 right-4 px-2 py-0.5 border border-ink/20 rounded bg-cream text-body-xs font-bold text-muted tracking-wider">
                     SOON

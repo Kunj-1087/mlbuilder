@@ -40,17 +40,17 @@ export default function Footer() {
               <Label variant="default" className="text-accent text-body-xs block mb-4">EXPLORE</Label>
               <ul className="space-y-2.5">
                 <li>
-                  <Link href="/automation/workflows" className="hover:text-accent transition-colors">
+                  <Link href="/automation" className="hover:text-accent transition-colors">
                     <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Automation</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/research/papers" className="hover:text-accent transition-colors">
+                  <Link href="/research" className="hover:text-accent transition-colors">
                     <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Research</Body>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/tools/free" className="hover:text-accent transition-colors">
+                  <Link href="/tools" className="hover:text-accent transition-colors">
                     <Body size="sm" className="text-cream/60 hover:text-accent transition-colors">Tools</Body>
                   </Link>
                 </li>

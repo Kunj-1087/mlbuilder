@@ -1,4 +1,17 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'My Account Settings — MLBuilder',
+  description: 'Manage your MLBuilder account, profile details, and preferences.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/account',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function Page() {
   return (

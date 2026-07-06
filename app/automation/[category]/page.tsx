@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getCategory } from '@/lib/content/automation';
@@ -8,6 +9,20 @@ interface CategoryPageProps {
   params: Promise<{
     category: string;
   }>;
+}
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { category: categorySlug } = await params;
+  const category = await getCategory(categorySlug);
+  if (!category) return {};
+
+  return {
+    title: `${category.title} Workflows & Automation`,
+    description: category.intro || `Download production-ready workflows for ${category.title}. Step-by-step documentation, clean code patches, and configuration scripts.`,
+    alternates: {
+      canonical: `https://mlbuilder.in/automation/${categorySlug}`,
+    },
+  };
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

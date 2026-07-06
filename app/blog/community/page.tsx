@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'Community Hub — Share and Learn Automation',
+  description: 'Connect with other vibe coders and builders. Share automation scripts, ask questions, and collaborate on building projects.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/blog/community',
+  },
+};
 
 export default function Page() {
   return (

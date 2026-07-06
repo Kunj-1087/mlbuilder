@@ -1,4 +1,17 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'Reset Password Request — MLBuilder',
+  description: 'Forgot your password? Request a secure password reset link to regain access to your saved MLBuilder dashboards.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/forgot-password',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function Page() {
   return (

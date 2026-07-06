@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy — MLBuilder',
+  description: 'Read the privacy policy of MLBuilder. Learn how we handle and protect user analytics, authentication credentials, and data.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/privacy',
+  },
+};
 
 export default function Page() {
   return (

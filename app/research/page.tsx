@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'AI Research Digests — Plain English Explanations',
+  description: 'Complex machine learning and AI research papers translated into plain, actionable English digests for developers and builders.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/research',
+  },
+};
 
 export default function Page() {
   return (

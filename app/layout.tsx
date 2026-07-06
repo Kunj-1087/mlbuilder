@@ -13,9 +13,37 @@ import { archivoBlack, inter, caveat, geistMono } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MLBuilder — Cut the AI Noise, Build for Real",
+  title: {
+    default: "MLBuilder — Cut the AI Noise, Build for Real",
+    template: "%s | MLBuilder",
+  },
   description: "AI automation breakdowns, research digests in plain English, and free tools — all in one place. Built for people who actually want to ship things.",
   metadataBase: new URL("https://mlbuilder.in"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mlbuilder.in",
+    siteName: "MLBuilder",
+    title: "MLBuilder — Cut the AI Noise, Build for Real",
+    description: "AI automation breakdowns, research digests in plain English, and free tools — all in one place. Built for people who actually want to ship things.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MLBuilder — Cut the AI Noise, Build for Real",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MLBuilder — Cut the AI Noise, Build for Real",
+    description: "AI automation breakdowns, research digests in plain English, and free tools — all in one place. Built for people who actually want to ship things.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({

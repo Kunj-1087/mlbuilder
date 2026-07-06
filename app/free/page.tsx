@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'Free Resources & Downloadable Guides — MLBuilder',
+  description: 'Get free downloadable guides, cheat sheets, and automation setups. Build your project toolbox with actionable PDF resources.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/free',
+  },
+};
 
 export default function Page() {
   return (

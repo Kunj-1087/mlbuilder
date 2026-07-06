@@ -14,29 +14,26 @@ const navItems = [
   {
     label: 'Automation',
     items: [
-      { label: 'Workflows', to: '/automation/workflows', description: 'Step-by-step AI automations' },
-      { label: 'Scripts', to: '/automation/scripts', description: 'Ready-to-run code snippets' },
-      { label: 'Case Studies', to: '/automation/case-studies', description: 'Real-world breakdowns' },
+      { label: 'All Automations', to: '/automation', description: 'Browse all scripts and pipelines' },
+      { label: 'Web Scraping', to: '/automation/web-scraping', description: 'Production-ready Python scrapers' },
     ],
   },
   {
     label: 'Research',
     items: [
-      { label: 'Papers', to: '/research/papers', description: 'Key papers, explained plainly' },
-      { label: 'Library', to: '/research/library', description: 'Curated reading lists' },
-      { label: 'Insights', to: '/research/insights', description: 'What the research actually means' },
+      { label: 'Research Digests', to: '/research', description: 'ML papers, explained plainly' },
     ],
   },
   {
     label: 'Tools',
     items: [
-      { label: 'Free Tools', to: '/tools/free', description: 'No cost, no catch' },
+      { label: 'Utility Tools', to: '/tools', description: '100% free developer utilities' },
     ],
   },
   {
     label: 'Blog',
     items: [
-      { label: 'All Posts', to: '/blog', description: 'Build notes, research, deep dives' },
+      { label: 'All Posts', to: '/blog', description: 'Build notes and developer logs' },
       { label: 'Community', to: '/blog/community', description: 'Where the community lives' },
     ],
   },

@@ -5,7 +5,7 @@ export default auth((req) => {
   const { nextUrl } = req;
 
   // Paths to protect (and all sub-routes)
-  const protectedRoutes = ["/blog", "/automation", "/research", "/tools", "/account"];
+  const protectedRoutes = ["/account"];
   const isProtectedRoute = protectedRoutes.some((route) =>
     nextUrl.pathname.startsWith(route)
   );

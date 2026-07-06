@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import { DisplayHeading, Body } from '@/components/typography';
+
+export const metadata: Metadata = {
+  title: 'Stay Ahead — Join the MLBuilder Newsletter',
+  description: 'Get weekly AI automation breakdowns, curated research digests, and developer tools delivered directly to your inbox.',
+  alternates: {
+    canonical: 'https://mlbuilder.in/newsletter',
+  },
+};
 
 export default function Page() {
   return (
