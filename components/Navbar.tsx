@@ -200,12 +200,6 @@ export default function Navbar() {
                   </div>
                   <Label className="text-body-sm font-bold text-current cursor-pointer">{user.name}</Label>
                 </Link>
-                <button
-                  onClick={signOut}
-                  className="hover:text-accent transition-colors cursor-pointer"
-                >
-                  <Label className="text-body-sm font-bold text-ink cursor-pointer hover:text-accent transition-colors">Sign Out</Label>
-                </button>
               </div>
             ) : (
               <div className="hidden md:flex items-center gap-2">
@@ -316,15 +310,7 @@ export default function Navbar() {
                   >
                     <Label className="text-body-sm font-bold text-ink">Account ({user.name})</Label>
                   </Link>
-                  <button
-                    onClick={() => {
-                      signOut();
-                      setMobileOpen(false);
-                    }}
-                    className="block w-full text-left px-3 py-2 cursor-pointer"
-                  >
-                    <Label className="text-body-sm font-bold text-accent cursor-pointer">Sign Out</Label>
-                  </button>
+
                 </>
               ) : (
                 <div className="flex gap-2 px-3 pt-1">
