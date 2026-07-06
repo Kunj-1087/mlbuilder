@@ -1,4 +1,4 @@
-import * as archiver from 'archiver';
+const archiver = require('archiver');
 import fs from 'fs';
 import path from 'path';
 import { getAutomation } from './automation';
@@ -15,7 +15,7 @@ export async function streamCodeZip(
 
   const codePath = path.join(process.cwd(), 'content', 'automation', categorySlug, automationSlug, 'code');
   
-  const archive = ((archiver as any).default || archiver)('zip', {
+  const archive = archiver('zip', {
     zlib: { level: 9 }, // Maximum compression
   });
 
