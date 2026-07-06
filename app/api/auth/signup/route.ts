@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { sendEmail } from "@/lib/email";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 
@@ -45,6 +46,13 @@ export async function POST(request: Request) {
         email: email.toLowerCase(),
         password: hashedPassword,
       },
+    });
+
+    // Send welcome email
+    await sendEmail({
+      to: user.email,
+      subject: "Welcome to MLBuilder!",
+      html: `<p>Hi ${name || 'there'},</p><p>Congrats on signing up to <strong>MLBuilder</strong>! We are excited to have you on board.</p>`,
     });
 
     return NextResponse.json(
