@@ -39,9 +39,22 @@ export default async function Page() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
-      <ProfileHeader name={serializableUser.name} email={serializableUser.email} />
-      <ProfileInfoForm initialUser={serializableUser} />
+    <div
+      className="relative w-full min-h-[calc(100vh-4rem)] bg-cream"
+      style={{
+        backgroundImage: "linear-gradient(#1E2130 1px, transparent 1px), linear-gradient(90deg, #1E2130 1px, transparent 1px)",
+        backgroundSize: "24px 24px",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-16 relative z-10">
+        <ProfileHeader
+          name={serializableUser.name}
+          email={serializableUser.email}
+          createdAt={serializableUser.createdAt}
+        />
+        <ProfileInfoForm initialUser={serializableUser} />
+      </div>
     </div>
   );
 }
+

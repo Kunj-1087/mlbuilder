@@ -301,3 +301,4 @@ export default function ProfileInfoForm({ initialUser }: ProfileInfoFormProps) {
     </div>
   );
 }
+
