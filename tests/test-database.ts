@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { execSync } from "child_process";
 import bcrypt from "bcryptjs";
 
-const TEST_DB_URL = process.env.TEST_DATABASE_URL || "postgresql://mlbuilder:mlbuilder_dev_password@localhost:5433/mlbuilder_test?schema=public";
+const TEST_DB_URL = process.env.TEST_DATABASE_URL || "postgresql://postgres:postgres@127.0.0.1:5432/mlbuilder_test?schema=public";
 
 // Create a client bound specifically to the test database
 export const testPrisma = new PrismaClient({

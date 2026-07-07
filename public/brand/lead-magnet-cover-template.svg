@@ -19,21 +19,33 @@
   </text>
 
   <!-- Subtitle Tagline (Caveat script font) -->
-  <text x="100" y="740" font-family="'Caveat', cursive" font-size="52" font-weight="700" fill="#FF6A1A">A Step-by-Step AI Automation Blueprint</text>
+  <text x="100" y="740" font-family="'Caveat', cursive" font-size="52" font-weight="700" fill="#4F7CFF">A Step-by-Step AI Automation Blueprint</text>
 
   <!-- Bottom Brand Mark -->
   <g transform="translate(100, 1550)">
-    <!-- Star -->
-    <path d="M 24 2 L 27.75 17.75 L 43.5 24 L 27.75 30.25 L 24 46 L 20.25 30.25 L 4.5 24 L 20.25 17.75 Z" fill="#F5F1E6" />
+    <!-- Node/Network Mark -->
+    <g transform="scale(0.15)">
+      <path d="M 120 100 L 40 100 L 40 280 L 220 280 L 220 230" stroke="#4F7CFF" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+      <path d="M 200 220 L 280 220 L 280 40 L 100 40 L 100 90" stroke="#F5F1E6" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+      <line x1="100" y1="220" x2="130" y2="150" stroke="#4F7CFF" stroke-width="8" />
+      <line x1="100" y1="220" x2="200" y2="190" stroke="#4F7CFF" stroke-width="8" />
+      <line x1="210" y1="110" x2="130" y2="150" stroke="#F5F1E6" stroke-width="8" />
+      <line x1="210" y1="110" x2="200" y2="190" stroke="#F5F1E6" stroke-width="8" />
+      <line x1="130" y1="150" x2="200" y2="190" stroke="#F5F1E6" stroke-width="8" />
+      <circle cx="210" cy="110" r="18" fill="#4F7CFF" />
+      <circle cx="100" cy="220" r="18" fill="#4F7CFF" />
+      <circle cx="130" cy="150" r="18" fill="#F5F1E6" />
+      <circle cx="200" cy="190" r="18" fill="#F5F1E6" />
+    </g>
     <!-- Text -->
     <text x="64" y="34" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="40" font-weight="900" letter-spacing="-0.02em">
-      <tspan fill="#FF6A1A">ML</tspan><tspan fill="#F5F1E6">BUILDER</tspan>
+      <tspan fill="#4F7CFF">ML</tspan><tspan fill="#F5F1E6">BUILDER</tspan>
     </text>
   </g>
 
   <!-- Bottom Right Free Tag -->
   <g transform="translate(940, 1550)">
-    <rect width="200" height="54" rx="27" fill="#FF6A1A" stroke="#F5F1E6" stroke-width="2.5" />
+    <rect width="200" height="54" rx="27" fill="#4F7CFF" stroke="#F5F1E6" stroke-width="2.5" />
     <text x="100" y="34" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#111111">FREE PDF</text>
   </g>
 </svg>

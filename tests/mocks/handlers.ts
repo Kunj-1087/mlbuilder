@@ -36,6 +36,14 @@ function writeEvents(events: MockedEvent[]) {
 }
 
 export const handlers = [
+  // Intercept newsletter subscription API
+  http.post("*/api/newsletter/subscribe", async () => {
+    return HttpResponse.json(
+      { success: true, message: "Check your inbox — confirmation link just landed." },
+      { status: 200 }
+    );
+  }),
+
   // Intercept Resend API email delivery
   http.post("https://api.resend.com/emails", async ({ request }) => {
     try {

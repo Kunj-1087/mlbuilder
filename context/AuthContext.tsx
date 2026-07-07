@@ -17,7 +17,7 @@ interface AuthContextType {
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signUp: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
-  signOut: () => void;
+  signOut: (options?: { callbackUrl?: string }) => Promise<any>;
   updateUser: (updates: { name?: string; email?: string }) => { success: boolean; error?: string };
   deleteUser: () => void;
 }
@@ -78,12 +78,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const signOut = () => {
-    nextAuthSignOut({ redirect: true, callbackUrl: "/" });
+  const signOut = (options?: { callbackUrl?: string }) => {
+    return nextAuthSignOut({ redirect: true, callbackUrl: options?.callbackUrl || "/" });
   };
 
   const updateUser = (updates: { name?: string; email?: string }) => {
-    update(updates);
+    try {
+      if (typeof update === "function") {
+        update(updates);
+      }
+    } catch (err) {
+      console.warn("NextAuth session update failed:", err);
+    }
     return { success: true };
   };
 

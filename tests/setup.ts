@@ -23,8 +23,8 @@ afterAll(() => {
 process.env.NEXT_PUBLIC_SITE_URL = "http://localhost:3000";
 process.env.NEXTAUTH_SECRET = "test_nextauth_secret_longer_key_32_bytes_longer";
 process.env.NEXTAUTH_URL = "http://localhost:3000";
-process.env.DATABASE_URL = "postgresql://mlbuilder:mlbuilder_dev_password@localhost:5433/mlbuilder_test?schema=public";
-process.env.TEST_DATABASE_URL = "postgresql://mlbuilder:mlbuilder_dev_password@localhost:5433/mlbuilder_test?schema=public";
+process.env.DATABASE_URL = "postgresql://postgres:postgres@127.0.0.1:5432/mlbuilder_test?schema=public";
+process.env.TEST_DATABASE_URL = "postgresql://postgres:postgres@127.0.0.1:5432/mlbuilder_test?schema=public";
 process.env.RESEND_API_KEY = "re_mock_test_key";
 process.env.NEXT_PUBLIC_POSTHOG_KEY = "phc_mock_test_key";
 process.env.NEXT_PUBLIC_POSTHOG_HOST = "https://us.i.posthog.com";

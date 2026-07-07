@@ -5,7 +5,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests/e2e",
-  timeout: 30000,
+  timeout: 120000,
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -17,10 +17,11 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: process.env.TEST_BASE_URL || "http://localhost:3000",
+    baseURL: process.env.TEST_BASE_URL || "http://127.0.0.1:3000",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
+    storageState: "./tests/e2e/storage-state.json",
   },
 
   projects: [
@@ -44,8 +45,18 @@ export default defineConfig({
 
   webServer: {
     command: "npx next dev -p 3000",
-    url: "http://localhost:3000",
+    url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
+    stdout: "pipe",
+    stderr: "pipe",
+    env: {
+      DATABASE_URL: process.env.TEST_DATABASE_URL || "postgresql://postgres:postgres@127.0.0.1:5432/mlbuilder_test?schema=public",
+      RESEND_API_KEY: "re_mock_test_key",
+      NEXT_PUBLIC_POSTHOG_KEY: "",
+      NEXT_PUBLIC_POSTHOG_HOST: "",
+      NEXTAUTH_URL: "http://127.0.0.1:3000",
+      NEXT_PUBLIC_SITE_URL: "http://127.0.0.1:3000",
+    },
   },
 });

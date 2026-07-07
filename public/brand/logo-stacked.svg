@@ -1,7 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
-  <!-- Centered sharp star mark in ink black -->
-  <path d="M 128 20 L 135 50 L 168 60 L 135 70 L 128 100 L 121 70 L 88 60 L 121 50 Z" fill="#111111" />
+  <!-- Centered Node/Network Mark -->
+  <g transform="translate(88, 20) scale(0.25)">
+    <!-- Left Bracket (Blue) -->
+    <path d="M 120 100 L 40 100 L 40 280 L 220 280 L 220 230" stroke="#4F7CFF" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <!-- Right Bracket (White) -->
+    <path d="M 200 220 L 280 220 L 280 40 L 100 40 L 100 90" stroke="#111111" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <!-- Connections (Lines) -->
+    <line x1="100" y1="220" x2="130" y2="150" stroke="#4F7CFF" stroke-width="8" />
+    <line x1="100" y1="220" x2="200" y2="190" stroke="#4F7CFF" stroke-width="8" />
+    
+    <line x1="210" y1="110" x2="130" y2="150" stroke="#111111" stroke-width="8" />
+    <line x1="210" y1="110" x2="200" y2="190" stroke="#111111" stroke-width="8" />
+    <line x1="130" y1="150" x2="200" y2="190" stroke="#111111" stroke-width="8" />
+    
+    <!-- Nodes (Circles) -->
+    <circle cx="210" cy="110" r="18" fill="#4F7CFF" />
+    <circle cx="100" cy="220" r="18" fill="#4F7CFF" />
+    <circle cx="130" cy="150" r="18" fill="#111111" />
+    <circle cx="200" cy="190" r="18" fill="#111111" />
+  </g>
+
   <!-- Stacked Wordmark -->
-  <text x="128" y="170" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="64" font-weight="900" fill="#FF6A1A" letter-spacing="-0.02em">ML</text>
+  <text x="128" y="170" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="64" font-weight="900" fill="#4F7CFF" letter-spacing="-0.02em">ML</text>
   <text x="134" y="215" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="28" font-weight="900" fill="#111111" letter-spacing="0.12em">BUILDER</text>
 </svg>

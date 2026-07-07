@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import NewsletterForm from './NewsletterForm';
 import { BRAND } from '@/lib/brand/constants';
 import { DisplayHeading, Body, Label, Fine } from '@/components/typography';
@@ -22,10 +23,13 @@ export default function Footer() {
             {/* ── Brand ── */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="inline-flex items-center gap-2.5 group">
-                {/* Star mark — matches Navbar */}
-                <svg width="20" height="20" viewBox="0 0 22 22" fill="none" className="flex-shrink-0 group-hover:rotate-[20deg] transition-transform duration-300">
-                  <path d="M11 0L13.1 8.9L22 11L13.1 13.1L11 22L8.9 13.1L0 11L8.9 8.9L11 0Z" fill={BRAND.colors.orange} />
-                </svg>
+                <Image
+                  src={BRAND.assets.logoMark}
+                  width={20}
+                  height={20}
+                  alt="MLBuilder Logo"
+                  className="flex-shrink-0 group-hover:rotate-[20deg] transition-transform duration-300"
+                />
                 <DisplayHeading as="span" size="sm" className="tracking-tight select-none text-lg">
                   <span className="text-accent">ML</span><span className="text-cream">BUILDER</span>
                 </DisplayHeading>

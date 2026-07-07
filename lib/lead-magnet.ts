@@ -181,76 +181,33 @@ export async function claimLeadMagnet(
   source: string = 'free-landing',
 ): Promise<ClaimResult> {
   // Simulate network delay
-  await new Promise((r) => setTimeout(r, 700));
+  await new Promise((r) => setTimeout(r, 300));
 
   if (!email.trim() || !isValidEmail(email)) {
     return { success: false, error: "That email doesn't look right." };
   }
 
-  const magnets = getMagnets();
-  const magnet = magnets.find((m) => m.slug === slug);
-
-  if (!magnet || magnet.status !== 'PUBLISHED') {
-    return { success: false, error: 'This resource is not available right now.' };
-  }
-
-  // Create claim with download token
-  const downloadToken = crypto.randomUUID();
-  const claim: LeadMagnetClaim = {
-    id: crypto.randomUUID(),
-    email: email.toLowerCase(),
-    leadMagnetId: magnet.id,
-    source,
-    downloadToken,
-    tokenUsedAt: null,
-    createdAt: new Date().toISOString(),
-  };
-
-  const claims = getClaims();
-  claims.push(claim);
-  saveClaims(claims);
-
-  // Handle newsletter subscription (mirrors newsletter.ts logic)
-  const SUBSCRIBERS_KEY = 'mlbuilder_subscribers';
-  let subscribers: Array<{
-    id: string;
-    email: string;
-    status: string;
-    confirmationToken: string;
-    source: string;
-    createdAt: string;
-    confirmedAt?: string;
-  }>;
-
   try {
-    subscribers = JSON.parse(localStorage.getItem(SUBSCRIBERS_KEY) || '[]');
-  } catch {
-    subscribers = [];
-  }
-
-  let alreadySubscribed = false;
-  const existing = subscribers.find((s) => s.email === email.toLowerCase());
-
-  if (existing) {
-    alreadySubscribed = existing.status === 'CONFIRMED';
-    // PENDING → resend confirmation (no-op in demo)
-    // UNSUBSCRIBED → do NOT auto-resubscribe (respect their choice)
-    // CONFIRMED → already good
-  } else {
-    // New subscriber
-    subscribers.push({
-      id: crypto.randomUUID(),
-      email: email.toLowerCase(),
-      status: 'PENDING',
-      confirmationToken: crypto.randomUUID(),
-      source: 'lead-magnet',
-      createdAt: new Date().toISOString(),
+    const res = await fetch('/api/lead-magnet/claim', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, slug, source }),
     });
+
+    const data = await res.json();
+    if (!res.ok) {
+      return { success: false, error: data.error || 'Failed to claim.' };
+    }
+
+    return {
+      success: true,
+      alreadySubscribed: data.alreadySubscribed,
+      downloadToken: data.downloadToken || '',
+    };
+  } catch (err) {
+    console.error('Error claiming lead magnet:', err);
+    return { success: false, error: 'Connection error. Please try again.' };
   }
-
-  localStorage.setItem(SUBSCRIBERS_KEY, JSON.stringify(subscribers));
-
-  return { success: true, alreadySubscribed, downloadToken };
 }
 
 /**

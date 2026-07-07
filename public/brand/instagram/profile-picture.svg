@@ -5,6 +5,26 @@
   <!-- Outer Guide Circle (shows where Instagram crops, with thin ink border) -->
   <circle cx="160" cy="160" r="140" stroke="#111111" stroke-width="2" fill="none" />
   
-  <!-- Centered Orange Star Mark (~180px diameter) -->
-  <path d="M 160 70 L 176 137.5 L 250 160 L 176 182.5 L 160 250 L 144 182.5 L 70 160 L 144 137.5 Z" fill="#FF6A1A" />
+  <!-- Centered Node/Network Mark -->
+  <g>
+    <!-- Left Bracket (Blue) -->
+    <path d="M 120 100 L 40 100 L 40 280 L 220 280 L 220 230" stroke="#4F7CFF" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <!-- Right Bracket (Ink) -->
+    <path d="M 200 220 L 280 220 L 280 40 L 100 40 L 100 90" stroke="#111111" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <!-- Connections (Lines) -->
+    <line x1="100" y1="220" x2="130" y2="150" stroke="#4F7CFF" stroke-width="8" />
+    <line x1="100" y1="220" x2="200" y2="190" stroke="#4F7CFF" stroke-width="8" />
+    
+    <line x1="210" y1="110" x2="130" y2="150" stroke="#111111" stroke-width="8" />
+    <line x1="210" y1="110" x2="200" y2="190" stroke="#111111" stroke-width="8" />
+    <line x1="130" y1="150" x2="200" y2="190" stroke="#111111" stroke-width="8" />
+    
+    <!-- Nodes (Circles) -->
+    <circle cx="210" cy="110" r="18" fill="#4F7CFF" />
+    <circle cx="100" cy="220" r="18" fill="#4F7CFF" />
+    <circle cx="130" cy="150" r="18" fill="#111111" />
+    <circle cx="200" cy="190" r="18" fill="#111111" />
+  </g>
 </svg>

@@ -25,7 +25,7 @@ export default function SignInFormClient() {
     const result = await signIn(email.toLowerCase(), password);
 
     if (!result.success) {
-      setError(result.error || "Invalid email or password.");
+      setError(result.error || "Invalid credentials. Try again.");
       setLoading(false);
     } else {
       router.push(callbackUrl);
@@ -35,26 +35,27 @@ export default function SignInFormClient() {
 
   return (
     <div className="max-w-md mx-auto px-4 py-16 md:py-24 flex flex-col justify-center min-h-[70vh]">
-      <div className="border-2 border-ink rounded-sharp bg-cream-muted shadow-hard p-8">
-        <DisplayHeading as="h1" size="sm" className="mb-2 text-center text-ink uppercase">
+      <div className="border-2 border-ink rounded-sharp bg-cream shadow-hard p-8">
+        <DisplayHeading as="h1" size="sm" className="mb-2 text-center text-ink uppercase select-none">
           Sign In
         </DisplayHeading>
-        <Body size="sm" muted className="text-center mb-8">
+        <Body size="sm" muted className="text-center mb-8 select-none">
           Welcome back. Enter your developer credentials below.
         </Body>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="p-3 bg-red-950/50 border border-red-500 rounded text-red-400 text-body-xs font-semibold text-center">
+            <div className="p-3 bg-accent/10 border-2 border-ink rounded text-ink text-body-xs font-semibold text-center select-none">
               ⚠️ {error}
             </div>
           )}
 
           <div>
-            <Label className="text-muted text-body-xs font-bold uppercase tracking-wider block mb-2">
+            <Label className="text-muted text-body-xs font-bold uppercase tracking-wider block mb-2 select-none">
               Email Address
             </Label>
             <input
+              id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -65,7 +66,7 @@ export default function SignInFormClient() {
           </div>
 
           <div>
-            <div className="flex justify-between items-center mb-2">
+            <div className="flex justify-between items-center mb-2 select-none">
               <Label className="text-muted text-body-xs font-bold uppercase tracking-wider">
                 Password
               </Label>
@@ -77,6 +78,7 @@ export default function SignInFormClient() {
               </Link>
             </div>
             <input
+              id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -95,7 +97,7 @@ export default function SignInFormClient() {
           </button>
         </form>
 
-        <div className="mt-8 text-center pt-6 border-t border-ink/10">
+        <div className="mt-8 text-center pt-6 border-t border-ink/10 select-none">
           <Body size="sm" muted>
             Don't have an account?{" "}
             <Link href="/sign-up" className="text-accent font-bold hover:underline">

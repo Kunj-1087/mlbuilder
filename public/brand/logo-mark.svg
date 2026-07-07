@@ -1,4 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
-  <!-- Icon-only sharp star mark in ink black -->
-  <path d="M 32 4 L 37 25 L 60 32 L 37 39 L 32 60 L 27 39 L 4 32 L 27 25 Z" fill="#111111" />
+  <g transform="scale(0.2)">
+    <!-- Left Bracket (Blue) -->
+    <path d="M 120 100 L 40 100 L 40 280 L 220 280 L 220 230" stroke="#4F7CFF" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <!-- Right Bracket (White) -->
+    <path d="M 200 220 L 280 220 L 280 40 L 100 40 L 100 90" stroke="#FFFFFF" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <!-- Connections (Lines) -->
+    <line x1="100" y1="220" x2="130" y2="150" stroke="#4F7CFF" stroke-width="8" />
+    <line x1="100" y1="220" x2="200" y2="190" stroke="#4F7CFF" stroke-width="8" />
+    
+    <line x1="210" y1="110" x2="130" y2="150" stroke="#FFFFFF" stroke-width="8" />
+    <line x1="210" y1="110" x2="200" y2="190" stroke="#FFFFFF" stroke-width="8" />
+    <line x1="130" y1="150" x2="200" y2="190" stroke="#FFFFFF" stroke-width="8" />
+    
+    <!-- Nodes (Circles) -->
+    <circle cx="210" cy="110" r="18" fill="#4F7CFF" />
+    <circle cx="100" cy="220" r="18" fill="#4F7CFF" />
+    <circle cx="130" cy="150" r="18" fill="#FFFFFF" />
+    <circle cx="200" cy="190" r="18" fill="#FFFFFF" />
+  </g>
 </svg>
