@@ -122,6 +122,11 @@ export default function Navbar() {
 
   const isActive = (path: string) => pathname.startsWith(path);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <nav className="sticky top-0 z-40 bg-cream border-b-2 border-ink">
 
@@ -178,7 +183,7 @@ export default function Navbar() {
             {/* Desktop search trigger */}
             <SearchTrigger />
 
-            {user ? (
+            {mounted && user ? (
               <div className="hidden md:flex items-center gap-3">
                 <Link
                   href="/free"
@@ -306,7 +311,7 @@ export default function Navbar() {
             </Link>
 
             <div className="pt-3 border-t-2 border-ink/10 space-y-2">
-              {user ? (
+              {mounted && user ? (
                 <>
                   <Link
                     href="/account"
