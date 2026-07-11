@@ -8,6 +8,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useSearch } from '@/lib/search/SearchContext';
 import DropdownMenu from './DropdownMenu';
 import PillButton from './PillButton';
+import ThemeToggle from './ThemeToggle';
 import { BRAND } from '@/lib/brand/constants';
 import { DisplayHeading, Body, Label } from '@/components/typography';
 
@@ -180,6 +181,7 @@ export default function Navbar() {
 
           {/* ── Right (Auth + Search + Mobile Toggle) ── */}
           <div className="flex items-center gap-3 flex-shrink-0">
+            <ThemeToggle />
             {/* Desktop search trigger */}
             <SearchTrigger />
 

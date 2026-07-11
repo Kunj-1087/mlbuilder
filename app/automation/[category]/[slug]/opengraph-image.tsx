@@ -39,7 +39,7 @@ export default async function Image({ params }: ImageProps) {
   const colorName = ['navy', 'black', 'teal', 'beige', 'maroon', 'olive'][sum % 6];
   const bgColor = brandColors[colorName];
   const textColor = colorName === 'beige' ? '#111111' : '#F5F1E6';
-  const tagBgColor = colorName === 'beige' ? '#4F7CFF' : '#4F7CFF';
+  const tagBgColor = colorName === 'beige' ? '#cf5c36' : '#cf5c36';
 
   return new ImageResponse(
     (

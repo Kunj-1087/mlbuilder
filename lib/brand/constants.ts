@@ -3,7 +3,7 @@ export const BRAND = {
     cream: "#0A0A0F",
     creamMuted: "#0F1117",
     ink: "#F8FAFC",
-    orange: "#4F7CFF",
+    orange: "#cf5c36",
   },
   fonts: {
     display: '"Archivo Black", "Arial Black", sans-serif',

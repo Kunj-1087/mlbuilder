@@ -267,7 +267,7 @@ export default function Home() {
       ═══════════════════════════════════════════════════════ */}
       {!user && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24">
-          <div className="bg-ink border-2 border-ink rounded-sharp shadow-hard-lg p-10 md:p-14 text-center">
+          <div className="bg-cream border-2 border-ink rounded-sharp shadow-hard-lg p-10 md:p-14 text-center">
             <SectionHeading as="h2" size="lg" className="text-cream mb-3">
               Make an account. It's free.
             </SectionHeading>

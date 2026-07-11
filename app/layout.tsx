@@ -53,6 +53,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${archivoBlack.variable} ${inter.variable} ${caveat.variable} ${geistMono.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.remove('light');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased font-body">
         <Providers>
           <div className="min-h-screen flex flex-col bg-cream">

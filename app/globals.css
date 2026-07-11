@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #0A0A0F;
-  --color-cream-muted: #0F1117;
-  --color-surface: #13151C;
-  --color-ink: #F8FAFC;
-  --color-accent: #4F7CFF;
-  --color-muted: #94A3B8;
+  --color-cream: var(--bg-cream);
+  --color-cream-muted: var(--bg-cream-muted-color);
+  --color-surface: var(--bg-surface-color);
+  --color-ink: var(--text-ink-color);
+  --color-accent: #cf5c36;
+  --color-muted: var(--text-muted-color);
 
   --color-cover-navy: #1B2A4E;
   --color-cover-black: #1A1A1A;
@@ -96,20 +96,77 @@
   --shadow-hard-lg: 6px 6px 0 #1E2130;
 }
 
+:root {
+  --bg-cream: #0A0A0F;
+  --bg-cream-muted-color: #0F1117;
+  --bg-surface-color: #13151C;
+  --footer-bg: #07070B;
+  --bg-nav-surface: #0F1117;
+  --bg-nav-surface-hover: #1A1D27;
+  --bg-nav-ink-active: #1E2130;
+  --bg-input: #13151C;
+
+  --text-ink-color: #F8FAFC;
+  --text-muted-color: #94A3B8;
+  --text-cream-30-color: #4A5568;
+}
+
+html.light {
+  --bg-cream: #ced0ce;
+  --bg-cream-muted-color: #e6e8e6;
+  --bg-surface-color: #ffffff;
+  --footer-bg: var(--bg-cream);
+  --bg-nav-surface: #ffffff;
+  --bg-nav-surface-hover: #e6e8e6;
+  --bg-nav-ink-active: #ffffff;
+  --bg-input: #ffffff;
+
+  --text-ink-color: #0A0A0F;
+  --text-muted-color: #4A5568;
+  --text-cream-30-color: #636e72;
+}
+
+/* Scoped overrides for containers that keep their dark background in light mode */
+.bg-cover-navy,
+.bg-cover-black,
+.bg-cover-teal,
+.bg-cover-maroon,
+.bg-cover-olive,
+.bg-accent,
+.hover\:bg-ink:hover,
+.bg-ink:hover,
+button[type="submit"] {
+  --text-ink-color: #F8FAFC !important;
+  --text-muted-color: #94A3B8 !important;
+  --text-cream-30-color: #4A5568 !important;
+}
+
+/* Neubrutalist dynamic background overrides */
+html.light button.bg-ink,
+html.light a.bg-ink {
+  background-color: #ffffff !important;
+  color: #0A0A0F !important;
+}
+html.light button.bg-ink:hover,
+html.light a.bg-ink:hover {
+  background-color: #cf5c36 !important;
+  color: #ffffff !important;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: #0A0A0F;
-  color: #F8FAFC;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #4F7CFF;
+  background-color: #cf5c36;
   color: #FFFFFF;
 }
 
@@ -118,7 +175,7 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0F;
+  background: var(--color-cream);
 }
 ::-webkit-scrollbar-thumb {
   background: #1E2130;
@@ -282,7 +339,7 @@ hr.border-t-2.border-ink {
 }
 
 .text-ink {
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 
 .bg-ink {
@@ -290,106 +347,106 @@ hr.border-t-2.border-ink {
 }
 
 .text-cream {
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 
 .bg-cream {
-  background-color: #0A0A0F !important;
+  background-color: var(--color-cream) !important;
 }
 
 /* Secondary & muted typography mappings */
 .text-muted {
-  color: #94A3B8 !important;
+  color: var(--color-muted) !important;
 }
 
 .text-cream\/50,
 .text-cream\/60 {
-  color: #94A3B8 !important;
+  color: var(--color-muted) !important;
 }
 
 .text-cream\/30 {
-  color: #4A5568 !important;
+  color: var(--text-cream-30-color) !important;
 }
 
 /* Input Fields overrides (subscribe newsletter, etc.) */
 input[type="email"].bg-cream {
-  background-color: #13151C !important;
+  background-color: var(--bg-input) !important;
   border-color: #1E2130 !important;
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 input[type="email"].bg-cream::placeholder {
-  color: #4A5568 !important;
+  color: var(--text-cream-30-color) !important;
 }
 
 /* Desktop dropdown inactive/active triggers */
 nav .bg-surface.text-ink.border-ink {
   border-color: #1E2130 !important;
-  background-color: #0F1117 !important;
-  color: #F8FAFC !important;
+  background-color: var(--bg-nav-surface) !important;
+  color: var(--color-ink) !important;
   box-shadow: 2px 2px 0 #1E2130 !important;
 }
 nav .bg-surface.text-ink.border-ink:hover {
-  background-color: #1A1D27 !important;
-  color: #F8FAFC !important;
+  background-color: var(--bg-nav-surface-hover) !important;
+  color: var(--color-ink) !important;
 }
 nav .bg-ink.text-cream.border-ink {
   border-color: #1E2130 !important;
-  background-color: #1E2130 !important;
-  color: #F8FAFC !important;
+  background-color: var(--bg-nav-ink-active) !important;
+  color: var(--color-ink) !important;
   box-shadow: 2px 2px 0 #1E2130 !important;
 }
 
 /* Search Trigger Button */
 nav button[aria-label="Open search"] {
-  background-color: #0F1117 !important;
+  background-color: var(--bg-nav-surface) !important;
   border-color: #1E2130 !important;
-  color: #94A3B8 !important;
+  color: var(--color-muted) !important;
   box-shadow: 2px 2px 0 #1E2130 !important;
 }
 nav button[aria-label="Open search"]:hover {
   box-shadow: 4px 4px 0 #1E2130 !important;
 }
 nav button[aria-label="Open search"] .bg-cream {
-  background-color: #1A1D27 !important;
+  background-color: var(--bg-nav-surface-hover) !important;
   border-color: #1E2130 !important;
-  color: #4A5568 !important;
+  color: var(--text-cream-30-color) !important;
 }
 
 /* Mobile search trigger and menu toggles */
 nav button[aria-label="Toggle menu"] {
-  background-color: #0F1117 !important;
+  background-color: var(--bg-nav-surface) !important;
   border-color: #1E2130 !important;
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
   box-shadow: 2px 2px 0 #1E2130 !important;
 }
 nav button[aria-label="Toggle menu"] svg path {
-  stroke: #F8FAFC !important;
+  stroke: var(--color-ink) !important;
 }
 
 /* Search modal close buttons & shortcut hint */
 .search-modal {
-  background-color: #0A0A0F !important;
+  background-color: var(--color-cream) !important;
   border-color: #1E2130 !important;
 }
 .search-modal button[aria-label="Close search (Esc)"] {
   border-color: #1E2130 !important;
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 .search-modal button[aria-label="Close search (Esc)"]:hover {
   background-color: #1E2130 !important;
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 .search-modal input[type="text"] {
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 .search-modal input[type="text"]::placeholder {
-  color: #4A5568 !important;
+  color: var(--text-cream-30-color) !important;
 }
 .search-modal .bg-cream {
-  background-color: #0A0A0F !important;
+  background-color: var(--color-cream) !important;
 }
 .search-modal .bg-cream-muted {
-  background-color: #0F1117 !important;
+  background-color: var(--color-cream-muted) !important;
 }
 
 /* Nav Dropdowns dropdown content box */
@@ -402,64 +459,64 @@ nav button[aria-label="Toggle menu"] svg path {
 /* Inactive nav dropdown links */
 .bg-surface.border-2.border-ink.shadow-hard-lg a {
   border-bottom-color: #1E2130 !important;
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 .bg-surface.border-2.border-ink.shadow-hard-lg a:hover {
-  background-color: #4F7CFF !important;
+  background-color: #cf5c36 !important;
   color: #FFFFFF !important;
 }
 
 /* Specific nav item overrides */
 nav a[href="/free"].bg-surface {
-  border-color: #4F7CFF !important;
-  color: #4F7CFF !important;
+  border-color: #cf5c36 !important;
+  color: #cf5c36 !important;
   background-color: transparent !important;
-  box-shadow: 2px 2px 0 #4F7CFF !important;
+  box-shadow: 2px 2px 0 #cf5c36 !important;
 }
 nav a[href="/free"].bg-surface:hover {
-  background-color: rgba(79, 124, 255, 0.12) !important;
-  color: #4F7CFF !important;
+  background-color: rgba(207, 92, 54, 0.12) !important;
+  color: #cf5c36 !important;
 }
 nav a[href="/sign-in"] {
-  background-color: #4F7CFF !important;
+  background-color: #cf5c36 !important;
   color: #FFFFFF !important;
   border-color: #1E2130 !important;
 }
 nav a[href="/sign-in"]:hover {
-  background-color: #3D6AED !important;
+  background-color: #b94b28 !important;
   color: #FFFFFF !important;
 }
 
 /* Inactive tags in page categories */
 .bg-cream-muted {
-  background-color: #0F1117 !important;
+  background-color: var(--color-cream-muted) !important;
 }
 
 /* Active tags/pills */
 .bg-accent {
-  background-color: #4F7CFF !important;
+  background-color: #cf5c36 !important;
 }
 .bg-accent:hover {
-  background-color: #3D6AED !important;
+  background-color: #b94b28 !important;
 }
 
 /* Hover Accent overrides */
 .hover\:text-accent:hover {
-  color: #3D6AED !important;
+  color: #b94b28 !important;
 }
 .hover\:bg-accent:hover {
-  background-color: #3D6AED !important;
+  background-color: #b94b28 !important;
 }
 
 /* Navigation overrides */
 nav.sticky.top-0 {
-  background-color: #0A0A0F !important;
+  background-color: var(--color-cream) !important;
   border-bottom: 1px solid #1E2130 !important;
 }
 
 /* Footer Container overrides */
 footer.bg-ink {
-  background-color: #07070B !important;
+  background-color: var(--footer-bg) !important;
   border-top: 1px solid #1E2130 !important;
 }
 footer.bg-ink,
@@ -467,20 +524,20 @@ footer.bg-ink a,
 footer.bg-ink span,
 footer.bg-ink p,
 footer.bg-ink div {
-  color: #94A3B8;
+  color: var(--color-muted);
 }
 footer.bg-ink .text-accent {
-  color: #4F7CFF !important;
+  color: #cf5c36 !important;
 }
 footer.bg-ink .text-cream {
-  color: #F8FAFC !important;
+  color: var(--color-ink) !important;
 }
 footer.bg-ink .text-cream\/60,
 footer.bg-ink .text-cream\/50 {
-  color: #94A3B8 !important;
+  color: var(--color-muted) !important;
 }
 footer.bg-ink .text-cream\/30 {
-  color: #4A5568 !important;
+  color: var(--text-cream-30-color) !important;
 }
 
 /* Skeleton loader backgrounds override */

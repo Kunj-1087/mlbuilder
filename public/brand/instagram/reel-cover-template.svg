@@ -22,14 +22,14 @@
 
   <!-- WATCH Badge (Pill button layout in upper center) -->
   <g transform="translate(800, 480)">
-    <rect width="220" height="64" rx="32" fill="#4F7CFF" stroke="#111111" stroke-width="3" />
+    <rect width="220" height="64" rx="32" fill="#cf5c36" stroke="#111111" stroke-width="3" />
     <text x="110" y="40" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#111111">▶ WATCH</text>
   </g>
 
   <!-- Big Display Headline Placeholder (Centered inside 1:1) -->
   <g transform="translate(0, 960)">
     <text x="540" y="-80" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="72" font-weight="900" fill="#111111" letter-spacing="-0.02em">HOOK HEADLINE</text>
-    <text x="540" y="10" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="72" font-weight="900" fill="#4F7CFF" letter-spacing="-0.02em">GOES HERE</text>
+    <text x="540" y="10" text-anchor="middle" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="72" font-weight="900" fill="#cf5c36" letter-spacing="-0.02em">GOES HERE</text>
     <text x="540" y="90" text-anchor="middle" font-family="'Caveat', cursive" font-size="44" font-weight="700" fill="#111111">Built solo. Shared openly.</text>
   </g>
 
@@ -37,21 +37,21 @@
   <g transform="translate(380, 1380)">
     <!-- Node/Network Mark -->
     <g transform="scale(0.1)">
-      <path d="M 120 100 L 40 100 L 40 280 L 220 280 L 220 230" stroke="#4F7CFF" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
+      <path d="M 120 100 L 40 100 L 40 280 L 220 280 L 220 230" stroke="#cf5c36" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
       <path d="M 200 220 L 280 220 L 280 40 L 100 40 L 100 90" stroke="#111111" stroke-width="24" fill="none" stroke-linejoin="miter" stroke-linecap="square" />
-      <line x1="100" y1="220" x2="130" y2="150" stroke="#4F7CFF" stroke-width="8" />
-      <line x1="100" y1="220" x2="200" y2="190" stroke="#4F7CFF" stroke-width="8" />
+      <line x1="100" y1="220" x2="130" y2="150" stroke="#cf5c36" stroke-width="8" />
+      <line x1="100" y1="220" x2="200" y2="190" stroke="#cf5c36" stroke-width="8" />
       <line x1="210" y1="110" x2="130" y2="150" stroke="#111111" stroke-width="8" />
       <line x1="210" y1="110" x2="200" y2="190" stroke="#111111" stroke-width="8" />
       <line x1="130" y1="150" x2="200" y2="190" stroke="#111111" stroke-width="8" />
-      <circle cx="210" cy="110" r="18" fill="#4F7CFF" />
-      <circle cx="100" cy="220" r="18" fill="#4F7CFF" />
+      <circle cx="210" cy="110" r="18" fill="#cf5c36" />
+      <circle cx="100" cy="220" r="18" fill="#cf5c36" />
       <circle cx="130" cy="150" r="18" fill="#111111" />
       <circle cx="200" cy="190" r="18" fill="#111111" />
     </g>
     <!-- Text -->
     <text x="44" y="24" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="28" font-weight="900" letter-spacing="-0.02em">
-      <tspan fill="#4F7CFF">ML</tspan><tspan fill="#111111">BUILDER</tspan>
+      <tspan fill="#cf5c36">ML</tspan><tspan fill="#111111">BUILDER</tspan>
     </text>
   </g>
 </svg>
