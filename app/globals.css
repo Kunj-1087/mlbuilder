@@ -434,7 +434,7 @@ nav button[aria-label="Toggle menu"] svg path {
 }
 .search-modal button[aria-label="Close search (Esc)"]:hover {
   background-color: #1E2130 !important;
-  color: var(--color-ink) !important;
+  color: #F8FAFC !important;
 }
 .search-modal input[type="text"] {
   color: var(--color-ink) !important;
@@ -451,7 +451,7 @@ nav button[aria-label="Toggle menu"] svg path {
 
 /* Nav Dropdowns dropdown content box */
 .bg-surface.border-2.border-ink.shadow-hard-lg {
-  background-color: #13151C !important;
+  background-color: var(--color-surface) !important;
   border-color: #1E2130 !important;
   box-shadow: 6px 6px 0 #1E2130 !important;
 }
@@ -464,6 +464,9 @@ nav button[aria-label="Toggle menu"] svg path {
 .bg-surface.border-2.border-ink.shadow-hard-lg a:hover {
   background-color: #cf5c36 !important;
   color: #FFFFFF !important;
+}
+.bg-surface.border-2.border-ink.shadow-hard-lg a:hover .text-muted {
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 /* Specific nav item overrides */
